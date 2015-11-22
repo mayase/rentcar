@@ -1,0 +1,18 @@
+{
+  "name": "TourFolio",
+  "description": "From tourist to walker",
+  "author": "Maxim Yakovlev",
+  "dependencies": {
+    "gulp": "3.9.0",
+    "gulp-angular-templatecache": "1.7.0",
+    "gulp-clean": "0.3.1",
+    "gulp-concat": "2.6.0",
+    "gulp-inject": "1.5.0",
+    "gulp-webserver": "0.9.1",
+    "gulp-less": "3.0.3",
+    "bower-main": "^0.2.14"
+  },
+  "devDependencies": {
+  },
+  "engine": "node >= 0.4.1"
+}
