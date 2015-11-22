@@ -6,7 +6,8 @@ var app = angular.module('App', [
     'restangular',
 
     //appModules
-    'Rentcar.Main'
+    'Rentcar.Main',
+    'Rentcar.About'
 ]);
 
 var options = function($urlRouterProvider) {

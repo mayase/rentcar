@@ -1,3 +1,28 @@
-<h1>Main module</h1>
-<div id="mainView" ui-view>
+<div class="app-search">
+    <div id="map"></div>
+    <div class="filter">Filter</div>
+    <div class="content" ng-show="ctrl.listActive" data-simplebar-direction="vertical">
+        <div class="item">
+            <div class="title">
+                Car Number One
+            </div>
+            <div class="title">
+                Car Number Two
+            </div>
+            <div class="title">
+                Car Number Three
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <!--ng-class="{show: ctrl.listActive, hide: !ctrl.listActive}"-->
+    <div class="ui-control listMapToggle"
+         ng-click="ctrl.listActive = !ctrl.listActive">
+        <i class="fa fa-map-o" ng-show="ctrl.listActive"></i>
+        <i class="fa fa-list-ul" ng-hide="ctrl.listActive"></i>
+        <div class="addon">10</div>
+    </div>
+    <div class="ui-control mapSearch" ng-click="" ng-hide="ctrl.listActive">
+        Поиск по карте <i class="fa fa-refresh"></i>
+    </div>
 </div>

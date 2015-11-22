@@ -1,15 +1,13 @@
 (function() {
-    var module = angular.module('Rentcar.Main', [
+    var module = angular.module('Rentcar.About', [
     ]);
 
     var options = function ($stateProvider) {
         $stateProvider
-            .state('main', {
-                url: '/',
-                controller: 'Rentcar.Main.IndexController',
-                controllerAs: 'self',
+            .state('about', {
+                url: '/about',
                 templateProvider: ['$templateCache', function ($templateCache) {
-                    return $templateCache.get('app/main/index.html');
+                    return $templateCache.get('app/about/index.html');
                 }]
             })
     };

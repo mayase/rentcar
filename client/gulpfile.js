@@ -14,7 +14,8 @@ var vendor_js = bowerJS.minified;
 var source_js = [
     './source/app/**/init.js',
     './source/app/**/*.js',
-    './source/app.js'
+    './source/app.js',
+    './source/ctrl.js'
 ];
 var fonts = [
     './bower_components/font-awesome/fonts/*.*'

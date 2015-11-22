@@ -151,6 +151,14 @@ h2{
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;
+  .addon{
+    background-color: inherit;
+    border-radius: 99px;
+    display: inline-block;
+    padding: 6px;
+    margin-left: -15px;
+    color: #FF683A;
+  }
 }
 
 .button{
@@ -161,3 +169,34 @@ h2{
   background-color: #FF6131;
   display: inline-block;
 }
+
+header{
+  background-color: #333;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  .logo{
+    display: inline-block;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #FF683A;
+    padding: 10px;
+  }
+  a{
+    color: white;
+    padding: 15px 20px;
+    margin: 0 5px;
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+    &:not(.active):hover{
+      border-bottom-color: #00BCD4;
+    }
+    &.active{
+      color: #00BCD4;
+    }
+  }
+}
+//body>*[ui-view]{
+//  position: relative;
+//  top: @header-height;
+//}

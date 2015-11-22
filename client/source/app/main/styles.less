@@ -1,0 +1,171 @@
+@header-height: 71px;
+@filter-height: 170px;
+.app-search{
+  position: absolute;
+  top: @header-height;
+  width: 100%;
+  bottom: 0;
+  .content,#map,.filter{
+    float: left;
+    width: 100%;
+  }
+  .filter{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    margin-top: -@filter-height;
+    height: @filter-height;
+    overflow: auto;
+    background-color: #333;
+  }
+  .content{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    bottom: @filter-height;
+    overflow: auto;
+    background-color: whitesmoke;
+  }
+  #map{
+    position: absolute!important;
+    top: 0;
+    width: 100%;
+    bottom: @filter-height;
+  }
+  .ui-control{
+    position: absolute;
+    z-index: 20;
+    top: 100%;
+    margin-top: -@filter-height - 30px;
+
+    &.listMapToggle{
+      right: 10px;
+    }
+    &.mapSearch{
+      right: 90px;
+      width: auto;
+      padding-right: 16px;
+      i{
+        margin-left: 10px;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .content,#map,{
+      width: 50%;
+    }
+    .filter{
+      width: 50%;
+      position: relative;
+      z-index: 20;
+      margin: 0;
+      margin-left: 50%;
+    }
+    #map{
+      position: fixed!important;
+      height: auto;
+      bottom: 0;
+      top: @header-height;
+    }
+    .content{
+      margin-left: 50%;
+      top: @filter-height;
+      bottom: 0;
+    }
+    .ui-control{
+      display: none;
+    }
+  }
+}
+
+.simplebar, [data-simplebar-direction] {
+  position: relative;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch; /* Trigger native scrolling for mobile, if not supported, plugin is used. */
+}
+
+.simplebar .simplebar-scroll-content,
+[data-simplebar-direction] .simplebar-scroll-content {
+  overflow-y: scroll;
+  overflow-x: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -ms-overflow-style: none; /* hide browser scrollbar on IE10+ */
+}
+
+/* hide browser scrollbar on Webkit (Safari & Chrome) */
+.simplebar-scroll-content::-webkit-scrollbar {
+  display: none;
+}
+
+[data-simplebar-direction="horizontal"] .simplebar-scroll-content,
+.simplebar.horizontal .simplebar-scroll-content {
+  overflow-x: scroll;
+  overflow-y: auto;
+}
+
+.simplebar-track {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 11px;
+}
+
+.simplebar-track .simplebar-scrollbar {
+  position: absolute;
+  right: 2px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  min-height: 10px;
+  width: 7px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  -ms-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+  background: #6c6e71;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+}
+
+.simplebar-track:hover .simplebar-scrollbar {
+  /* When hovered, remove all transitions from drag handle */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  opacity: 0.7;
+  -webkit-transition: opacity 0 linear;
+  -moz-transition: opacity 0 linear;
+  -o-transition: opacity 0 linear;
+  -ms-transition: opacity 0 linear;
+  transition: opacity 0 linear;
+}
+
+.simplebar-track .simplebar-scrollbar.visible {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  opacity: 0.7;
+}
+
+[data-simplebar-direction="horizontal"] .simplebar-track,
+.simplebar.horizontal .simplebar-track {
+  top: auto;
+  left: 0;
+  width: auto;
+  height: 11px;
+}
+
+[data-simplebar-direction="horizontal"] .simplebar-track .simplebar-scrollbar,
+.simplebar.horizontal .simplebar-track .simplebar-scrollbar {
+  right: auto;
+  top: 2px;
+  height: 7px;
+  min-height: 0;
+  min-width: 10px;
+  width: auto;
+}
