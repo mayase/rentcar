@@ -232,6 +232,8 @@ header {
   position: fixed;
   width: 100%;
   z-index: 20;
+  height: 71px;
+  overflow: hidden;
 }
 header .logo {
   display: inline-block;
@@ -327,6 +329,7 @@ header a.active {
     margin-left: 50%;
     top: 170px;
     bottom: 0;
+    display: block!important;
   }
   .app-search .ui-control {
     display: none;
