@@ -322,20 +322,6 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
-}
 .app-search {
   position: absolute;
   top: 71px;
@@ -389,7 +375,7 @@ header a.active {
 }
 .app-search .ui-selector .ui-selector-option,
 .app-search .ui-selector .ui-selector-active {
-  background: url(/assets/small.png) whitesmoke no-repeat center / 80%;
+  background: whitesmoke no-repeat center / 80%;
 }
 .app-search .ui-selector.class .ui-selector-options.show {
   height: 265px;
@@ -522,4 +508,18 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
+}
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
 }

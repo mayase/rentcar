@@ -106,6 +106,14 @@
                     self.selectors.class.value = val;
                     self.selectors.class.isActive = false;
                 }
+            },
+            transmission: {
+                value: '1',
+                isActive: false,
+                select: function(val){
+                    self.selectors.transmission.value = val;
+                    self.selectors.transmission.isActive = false;
+                }
             }
         };
 
