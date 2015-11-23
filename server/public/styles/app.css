@@ -219,6 +219,73 @@ h2 {
   margin-left: -15px;
   color: #FF683A;
 }
+.ui-selector {
+  display: inline-block;
+  position: relative;
+}
+.ui-selector > .ui-selector-options {
+  left: -7px;
+  background: #333;
+  border: 1px solid white;
+  display: inline-block;
+  padding: 2px;
+  border-radius: 999px;
+  position: absolute;
+  height: 0;
+  opacity: 0;
+  z-index: 19;
+  overflow: hidden;
+  -webkit-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
+  -moz-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
+  -o-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
+  transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
+  -webkit-transform: translate3d(0, -20px, 0);
+  -moz-transform: translate3d(0, -20px, 0);
+  -o-transform: translate3d(0, -20px, 0);
+  transform: translate3d(0, -20px, 0);
+}
+.ui-selector > .ui-selector-options.show {
+  height: 200px;
+  opacity: 1;
+  -webkit-transform: translate3d(0, -265px, 0);
+  -moz-transform: translate3d(0, -265px, 0);
+  -o-transform: translate3d(0, -265px, 0);
+  transform: translate3d(0, -265px, 0);
+}
+.ui-selector > .ui-selector-options > * {
+  margin: 5px;
+}
+.ui-selector > .ui-selector-active,
+.ui-selector > .ui-selector-options > [class^=ui-selector] {
+  background-color: whitesmoke;
+  height: 0;
+  width: 40px;
+  border-radius: 999px;
+  box-shadow: 2px 2px 4px #3f3b4e;
+  padding: 20px 0 40px 20px;
+  text-align: initial;
+  color: #35333B;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+}
+.ui-selector > .ui-selector-active .addon,
+.ui-selector > .ui-selector-options > [class^=ui-selector] .addon {
+  background-color: inherit;
+  border-radius: 99px;
+  display: inline-block;
+  padding: 6px;
+  margin-left: -15px;
+  color: #FF683A;
+}
+.ui-selector > .ui-selector-active {
+  z-index: 20;
+  position: relative;
+}
 .button {
   margin: 10px;
   padding: 10px 15px;
@@ -287,7 +354,6 @@ header a.active {
   width: 100%;
   margin-top: -170px;
   height: 170px;
-  overflow: auto;
   background-color: #333;
 }
 .app-search .content {
@@ -320,6 +386,29 @@ header a.active {
 }
 .app-search .ui-control.mapSearch i {
   margin-left: 10px;
+}
+.app-search .ui-selector .ui-selector-option,
+.app-search .ui-selector .ui-selector-active {
+  background: url(/assets/small.png) whitesmoke no-repeat center / 80%;
+}
+.app-search .ui-selector.class .ui-selector-options.show {
+  height: 265px;
+  -webkit-transform: translate3d(0, -330px, 0);
+  -moz-transform: translate3d(0, -330px, 0);
+  -o-transform: translate3d(0, -330px, 0);
+  transform: translate3d(0, -330px, 0);
+}
+.app-search .ui-selector.class .small {
+  background-image: url(/assets/small.png);
+}
+.app-search .ui-selector.class .normal {
+  background-image: url(/assets/normal.png);
+}
+.app-search .ui-selector.class .mid {
+  background-image: url(/assets/mid.png);
+}
+.app-search .ui-selector.class .large {
+  background-image: url(/assets/large.png);
 }
 @media (min-width: 768px) {
   .app-search .content,

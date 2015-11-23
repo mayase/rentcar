@@ -101,7 +101,11 @@
         self.selectors = {
             class: {
                 value: '1',
-                isActive: false
+                isActive: false,
+                select: function(val){
+                    self.selectors.class.value = val;
+                    self.selectors.class.isActive = false;
+                }
             }
         };
 
