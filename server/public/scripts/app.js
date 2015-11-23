@@ -17,6 +17,26 @@
     module.config(options);
 }());
 (function() {
+    var module = angular.module('Rentcar.ApiTest', [
+    ]);
+
+    var options = function ($stateProvider) {
+        $stateProvider
+            .state('apiTest', {
+                url: '/apiTest',
+                controller: 'Rentcar.ApiTest.IndexController',
+                controllerAs: 'self',
+                templateProvider: ['$templateCache', function ($templateCache) {
+                    return $templateCache.get('app/api_test/index.html');
+                }]
+            })
+    };
+
+    options.$inject = ['$stateProvider'];
+
+    module.config(options);
+}());
+(function() {
     var module = angular.module('Rentcar.Main', [
     ]);
 
@@ -35,6 +55,16 @@
     options.$inject = ['$stateProvider'];
 
     module.config(options);
+}());
+(function(){
+    var module_name = 'Rentcar.ApiTest',
+        controller_name = 'IndexController';
+    angular.module(module_name).controller(module_name+'.'+controller_name, controller);
+    controller.$inject = ['$scope', '$state'];
+    function controller($scope, $state) {
+
+        var self = this;
+    }
 }());
 (function(){
     var module_name = 'Rentcar.Main',
@@ -95,7 +125,8 @@ var app = angular.module('App', [
 
     //appModules
     'Rentcar.Main',
-    'Rentcar.About'
+    'Rentcar.About',
+    'Rentcar.ApiTest'
 ]);
 
 var options = function($urlRouterProvider) {
