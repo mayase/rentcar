@@ -97,6 +97,19 @@
         var self = this;
 
         self.value = 'hello';
+        setTimeout(function(){
+            console.log($('.datepicker'));
+            $('.datepicker').datepicker({
+            });
+        });
+        self.priceSlider = {
+            min: 100,
+            max: 900,
+            options: {
+                floor: 0,
+                ceil: 1000
+            }
+        };
 
         self.selectors = {
             class: {
@@ -113,6 +126,39 @@
                 select: function(val){
                     self.selectors.transmission.value = val;
                     self.selectors.transmission.isActive = false;
+                }
+            },
+            seats: {
+                value: '1',
+                isActive: false,
+                select: function(val){
+                    self.selectors.seats.value = val;
+                    self.selectors.seats.isActive = false;
+                },
+                text: function(){
+                    var mapper = {
+                        1: ' 2',
+                        2: ' 4',
+                        3: '5+'
+                    };
+                    return mapper[self.selectors.seats.value];
+                }
+            },
+            luggage: {
+                value: '1',
+                isActive: false,
+                select: function(val){
+                    self.selectors.luggage.value = val;
+                    self.selectors.luggage.isActive = false;
+                },
+                text: function(){
+                    var mapper = {
+                        1: ' 1',
+                        2: ' 2',
+                        3: '3',
+                        4: '4+'
+                    };
+                    return mapper[self.selectors.luggage.value];
                 }
             }
         };
@@ -165,6 +211,7 @@ var app = angular.module('App', [
     'templates',
     'ui.router',
     'restangular',
+    'rzModule',
 
     //appModules
     'Rentcar.Main',

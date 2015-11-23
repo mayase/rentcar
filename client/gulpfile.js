@@ -8,9 +8,9 @@ var less = require('gulp-less');
 var bowerMain = require('bower-main');
 var bowerJS = bowerMain('js','min.js');
 var bowerCSS = bowerMain('css','min.css');
-
+console.log(bowerJS);
 var target_folder = '../server/public';
-var vendor_js = bowerJS.minified;
+var vendor_js = bowerJS.minified.concat(bowerJS.minifiedNotFound);
 var source_js = [
     './source/app/**/init.js',
     './source/app/**/*.js',

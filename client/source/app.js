@@ -4,6 +4,7 @@ var app = angular.module('App', [
     'templates',
     'ui.router',
     'restangular',
+    'rzModule',
 
     //appModules
     'Rentcar.Main',

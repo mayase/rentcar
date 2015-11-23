@@ -1,5 +1,5 @@
 @header-height: 71px;
-@filter-height: 170px;
+@filter-height: 200px;
 .app-search{
   position: absolute;
   top: @header-height;
@@ -10,12 +10,14 @@
     width: 100%;
   }
   .filter{
+    box-sizing: border-box;
+    padding-top: 20px;
     position: absolute;
     top: 100%;
     width: 100%;
     margin-top: -@filter-height;
     height: @filter-height;
-    //overflow: auto;
+    //overflow: hidden;
     background-color: #333;
   }
   .content{
@@ -32,7 +34,7 @@
     width: 100%;
     bottom: @filter-height;
   }
-  .ui-control{
+  .ui-control.view{
     position: absolute;
     z-index: 20;
     top: 100%;
@@ -42,7 +44,10 @@
       right: 10px;
     }
     &.mapSearch{
-      right: 90px;
+      position: absolute;
+      margin: 0;
+      top: 10px;
+      right: 10px;
       width: auto;
       padding-right: 16px;
       i{
@@ -54,12 +59,44 @@
 
     .ui-selector-option,.ui-selector-active{
       background: whitesmoke no-repeat center / 80%;
+      text-align: left!important;
+      font-weight: bolder;
     }
 
+    &.transmission{
+      @height: 214px;
+      .wrapper.show{
+        height: @height;
+        .translate3d(0,-205px,0);
+      }
+      >*{
+        background-size: 70%;
+      }
+      .m{
+        background-image: url(/assets/m.png);
+      }
+      .sa{
+        background-image: url(/assets/sa.png);
+      }
+      .a{
+        background-image: url(/assets/a.png);
+      }
+    }
+    &.luggage{
+      @height: 270px;
+      .wrapper.show{
+        height: @height;
+        .translate3d(0,-@height,0);
+      }
+      .ui-selector-option{
+        margin: 1px 0 4px;
+      }
+    }
     &.class{
-      .ui-selector-options.show{
-        height: 265px;
-        .translate3d(0,-330px,0);
+      @height: 270px;
+      .wrapper.show{
+        height: @height;
+        .translate3d(0,-@height,0);
       }
       .small{
         background-image: url(/assets/small.png);
@@ -74,35 +111,62 @@
         background-image: url(/assets/large.png);
       }
     }
-  }
-
-  @media (min-width: 768px) {
-    .content,#map,{
-      width: 50%;
+    &.seats{
+      @height: 214px;
+      .wrapper.show{
+        height: @height;
+        .translate3d(0,-205px,0);
+      }
+      .ui-selector-option{
+        margin: 1px 0 4px;
+      }
     }
-    .filter{
-      width: 50%;
-      position: relative;
-      z-index: 20;
-      margin: 0;
-      margin-left: 50%;
-    }
-    #map{
-      position: fixed!important;
-      height: auto;
-      bottom: 0;
-      top: @header-height;
-    }
-    .content{
-      margin-left: 50%;
-      top: @filter-height;
-      bottom: 0;
-      display: block!important;
-    }
-    .ui-control{
-      display: none;
+    &.seats,&.luggage{
+      .title{
+        margin-top: 5px;
+      }
     }
   }
+  rzslider{
+    width: 90%;
+    margin-left: 5%;
+  }
+  .rz-pointer{
+    background-color: #FF683A;
+    &.rz-active:after{
+      background-color: #03A9F4;
+    }
+  }
+  .rz-selection{
+    background-color: lighten(#FF683A, 30%)!important;
+  }
+  //@media (min-width: 768px) {
+  //  .content,#map,{
+  //    width: 50%;
+  //  }
+  //  .filter{
+  //    width: 50%;
+  //    position: relative;
+  //    z-index: 20;
+  //    margin: 0;
+  //    margin-left: 50%;
+  //  }
+  //  #map{
+  //    position: fixed!important;
+  //    height: auto;
+  //    bottom: 0;
+  //    top: @header-height;
+  //  }
+  //  .content{
+  //    margin-left: 50%;
+  //    top: @filter-height;
+  //    bottom: 0;
+  //    display: block!important;
+  //  }
+  //  .ui-control{
+  //    display: none;
+  //  }
+  //}
 }
 
 .simplebar, [data-simplebar-direction] {

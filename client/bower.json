@@ -22,11 +22,13 @@
     "angular-ui-router": "~0.2.15",
     "restangular": "~1.5.1",
     "pure": "purecss#~0.6.0",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "angularjs-slider": "~2.0.0",
+    "moment": "~2.10.6"
   },
   "overrides": {
-    "font-awesome":{
-      "main":[
+    "font-awesome": {
+      "main": [
         "css/font-awesome.min.css"
       ]
     }

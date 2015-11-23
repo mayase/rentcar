@@ -8,22 +8,61 @@
                             normal: self.selectors.class.value == 2,
                             mid: self.selectors.class.value == 3,
                             large: self.selectors.class.value == 4}"></div>
-            <div class="ui-selector-options" ng-class="{show: self.selectors.class.isActive}">
-                <div class="ui-selector-option small" ng-click="self.selectors.class.select(1)"></div>
-                <div class="ui-selector-option normal" ng-click="self.selectors.class.select(2)"></div>
-                <div class="ui-selector-option mid" ng-click="self.selectors.class.select(3)"></div>
-                <div class="ui-selector-option large" ng-click="self.selectors.class.select(4)"></div>
+            <div class="wrapper" ng-class="{show: self.selectors.class.isActive}">
+                <div class="ui-selector-options">
+                    <div class="ui-selector-option small" ng-click="self.selectors.class.select(1)"></div>
+                    <div class="ui-selector-option normal" ng-click="self.selectors.class.select(2)"></div>
+                    <div class="ui-selector-option mid" ng-click="self.selectors.class.select(3)"></div>
+                    <div class="ui-selector-option large" ng-click="self.selectors.class.select(4)"></div>
+                </div>
             </div>
+            <div class="title">Класс</div>
         </div>
         <div class="ui-selector transmission">
             <div class="ui-selector-active"
-                 ng-click="self.selectors.transmission.isActive = !self.selectors.transmission.isActive"></div>
-            <div class="ui-selector-options" ng-class="{show: self.selectors.transmission.isActive}">
-                <div class="ui-selector-option" ng-click="self.selectors.transmission.select(1)">1</div>
-                <div class="ui-selector-option" ng-click="self.selectors.transmission.select(2)">2</div>
-                <div class="ui-selector-option" ng-click="self.selectors.transmission.select(3)">3</div>
+                 ng-click="self.selectors.transmission.isActive = !self.selectors.transmission.isActive"
+                 ng-class="{m: self.selectors.transmission.value == 1,
+                            sa: self.selectors.transmission.value == 2,
+                            a: self.selectors.transmission.value == 3}"></div>
+            <div class="wrapper" ng-class="{show: self.selectors.transmission.isActive}">
+                <div class="ui-selector-options" >
+                    <div class="ui-selector-option m" ng-click="self.selectors.transmission.select(1)"></div>
+                    <div class="ui-selector-option sa" ng-click="self.selectors.transmission.select(2)"></div>
+                    <div class="ui-selector-option a" ng-click="self.selectors.transmission.select(3)"></div>
+                </div>
             </div>
+            <div class="title">Коробка передач</div>
         </div>
+        <div class="ui-selector seats">
+            <div class="ui-selector-active"
+                 ng-click="self.selectors.seats.isActive = !self.selectors.seats.isActive">&nbsp;{{self.selectors.seats.text()}}</div>
+            <div class="wrapper" ng-class="{show: self.selectors.seats.isActive}">
+                <div class="ui-selector-options" ng-class="{show: self.selectors.seats.isActive}">
+                    <div class="ui-selector-option first" ng-click="self.selectors.seats.select(1)">&nbsp;2</div>
+                    <div class="ui-selector-option second" ng-click="self.selectors.seats.select(2)">&nbsp;4</div>
+                    <div class="ui-selector-option third" ng-click="self.selectors.seats.select(3)">5+</div>
+                </div>
+            </div>
+            <div class="title">Мест</div>
+        </div>
+        <div class="ui-selector luggage">
+            <div class="ui-selector-active"
+                 ng-click="self.selectors.luggage.isActive = !self.selectors.luggage.isActive">&nbsp;{{self.selectors.luggage.text()}}</div>
+            <div class="wrapper" ng-class="{show: self.selectors.luggage.isActive}">
+                <div class="ui-selector-options" ng-class="{show: self.selectors.luggage.isActive}">
+                    <div class="ui-selector-option first" ng-click="self.selectors.luggage.select(1)">&nbsp;1</div>
+                    <div class="ui-selector-option second" ng-click="self.selectors.luggage.select(2)">&nbsp;2</div>
+                    <div class="ui-selector-option third" ng-click="self.selectors.luggage.select(3)">&nbsp;3</div>
+                    <div class="ui-selector-option fourth" ng-click="self.selectors.luggage.select(4)">4+</div>
+                </div>
+            </div>
+            <div class="title">Багаж</div>
+        </div>
+        <input type="text" class="form-control datepicker">
+        <rzslider
+                rz-slider-model="self.priceSlider.min"
+                rz-slider-high="self.priceSlider.max"
+                rz-slider-options="self.priceSlider.options"></rzslider>
     </div>
     <div class="content" ng-show="self.listActive" data-simplebar-direction="vertical">
         <div class="item">
@@ -40,13 +79,13 @@
     </div>
     <div style="clear:both;"></div>
     <!--ng-class="{show: self.listActive, hide: !self.listActive}"-->
-    <div class="ui-control listMapToggle"
+    <div class="ui-control view listMapToggle"
          ng-click="self.listActive = !self.listActive">
         <i class="fa fa-map-o" ng-show="self.listActive"></i>
         <i class="fa fa-list-ul" ng-hide="self.listActive"></i>
         <div class="addon">10</div>
     </div>
-    <div class="ui-control mapSearch" ng-click="" ng-hide="self.listActive">
-        Поиск по карте <i class="fa fa-refresh"></i>
+    <div class="ui-control view mapSearch" ng-click="" ng-hide="self.listActive">
+        Искать здесь <i class="fa fa-refresh"></i>
     </div>
 </div>

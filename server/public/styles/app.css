@@ -222,41 +222,42 @@ h2 {
 .ui-selector {
   display: inline-block;
   position: relative;
+  vertical-align: text-top;
+  text-align: center;
+  width: 80px;
 }
-.ui-selector > .ui-selector-options {
-  left: -7px;
-  background: #333;
-  border: 1px solid white;
+.ui-selector .title {
+  color: whitesmoke;
+  font-size: 14px;
+}
+.ui-selector .wrapper {
+  left: 0;
+  right: 0;
   display: inline-block;
-  padding: 2px;
-  border-radius: 999px;
   position: absolute;
   height: 0;
   opacity: 0;
   z-index: 19;
   overflow: hidden;
-  -webkit-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
-  -moz-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
-  -o-transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
-  transition: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
-  -webkit-transform: translate3d(0, -20px, 0);
-  -moz-transform: translate3d(0, -20px, 0);
-  -o-transform: translate3d(0, -20px, 0);
-  transform: translate3d(0, -20px, 0);
+  -webkit-transition: transform 0.5s, height 0.5s, opacity 0.2s ease-in;
+  -moz-transition: transform 0.5s, height 0.5s, opacity 0.2s ease-in;
+  -o-transition: transform 0.5s, height 0.5s, opacity 0.2s ease-in;
+  transition: transform 0.5s, height 0.5s, opacity 0.2s ease-in;
+  -webkit-transform: translate3d(0, 50px, 0);
+  -moz-transform: translate3d(0, 50px, 0);
+  -o-transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 50px, 0);
 }
-.ui-selector > .ui-selector-options.show {
+.ui-selector .wrapper.show {
   height: 200px;
   opacity: 1;
-  -webkit-transform: translate3d(0, -265px, 0);
-  -moz-transform: translate3d(0, -265px, 0);
-  -o-transform: translate3d(0, -265px, 0);
-  transform: translate3d(0, -265px, 0);
+  -webkit-transform: translate3d(0, -210px, 0);
+  -moz-transform: translate3d(0, -210px, 0);
+  -o-transform: translate3d(0, -210px, 0);
+  transform: translate3d(0, -210px, 0);
 }
-.ui-selector > .ui-selector-options > * {
-  margin: 5px;
-}
-.ui-selector > .ui-selector-active,
-.ui-selector > .ui-selector-options > [class^=ui-selector] {
+.ui-selector .wrapper > .ui-selector-active,
+.ui-selector .wrapper > .ui-selector-options > [class^=ui-selector] {
   background-color: whitesmoke;
   height: 0;
   width: 40px;
@@ -272,9 +273,11 @@ h2 {
   -ms-user-select: none;
   /* IE 10+ */
   user-select: none;
+  text-align: center;
+  display: inline-block;
 }
-.ui-selector > .ui-selector-active .addon,
-.ui-selector > .ui-selector-options > [class^=ui-selector] .addon {
+.ui-selector .wrapper > .ui-selector-active .addon,
+.ui-selector .wrapper > .ui-selector-options > [class^=ui-selector] .addon {
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
@@ -282,9 +285,40 @@ h2 {
   margin-left: -15px;
   color: #FF683A;
 }
+.ui-selector .wrapper > .ui-selector-options {
+  width: 65px;
+  border: 1px solid white;
+  display: inline-block;
+  background-color: #333;
+  border-radius: 999px;
+  padding: 5px 3px 1px;
+}
 .ui-selector > .ui-selector-active {
-  z-index: 20;
-  position: relative;
+  background-color: whitesmoke;
+  height: 0;
+  width: 40px;
+  border-radius: 999px;
+  box-shadow: 2px 2px 4px #3f3b4e;
+  padding: 20px 0 40px 20px;
+  text-align: initial;
+  color: #35333B;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  text-align: center;
+  display: inline-block;
+}
+.ui-selector > .ui-selector-active .addon {
+  background-color: inherit;
+  border-radius: 99px;
+  display: inline-block;
+  padding: 6px;
+  margin-left: -15px;
+  color: #FF683A;
 }
 .button {
   margin: 10px;
@@ -322,6 +356,20 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
+}
 .app-search {
   position: absolute;
   top: 71px;
@@ -335,18 +383,20 @@ header a.active {
   width: 100%;
 }
 .app-search .filter {
+  box-sizing: border-box;
+  padding-top: 20px;
   position: absolute;
   top: 100%;
   width: 100%;
-  margin-top: -170px;
-  height: 170px;
+  margin-top: -200px;
+  height: 200px;
   background-color: #333;
 }
 .app-search .content {
   position: absolute;
   top: 0;
   width: 100%;
-  bottom: 170px;
+  bottom: 200px;
   overflow: auto;
   background-color: whitesmoke;
 }
@@ -354,35 +404,69 @@ header a.active {
   position: absolute!important;
   top: 0;
   width: 100%;
-  bottom: 170px;
+  bottom: 200px;
 }
-.app-search .ui-control {
+.app-search .ui-control.view {
   position: absolute;
   z-index: 20;
   top: 100%;
-  margin-top: -200px;
+  margin-top: -230px;
 }
-.app-search .ui-control.listMapToggle {
+.app-search .ui-control.view.listMapToggle {
   right: 10px;
 }
-.app-search .ui-control.mapSearch {
-  right: 90px;
+.app-search .ui-control.view.mapSearch {
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  right: 10px;
   width: auto;
   padding-right: 16px;
 }
-.app-search .ui-control.mapSearch i {
+.app-search .ui-control.view.mapSearch i {
   margin-left: 10px;
 }
 .app-search .ui-selector .ui-selector-option,
 .app-search .ui-selector .ui-selector-active {
   background: whitesmoke no-repeat center / 80%;
+  text-align: left!important;
+  font-weight: bolder;
 }
-.app-search .ui-selector.class .ui-selector-options.show {
-  height: 265px;
-  -webkit-transform: translate3d(0, -330px, 0);
-  -moz-transform: translate3d(0, -330px, 0);
-  -o-transform: translate3d(0, -330px, 0);
-  transform: translate3d(0, -330px, 0);
+.app-search .ui-selector.transmission .wrapper.show {
+  height: 214px;
+  -webkit-transform: translate3d(0, -205px, 0);
+  -moz-transform: translate3d(0, -205px, 0);
+  -o-transform: translate3d(0, -205px, 0);
+  transform: translate3d(0, -205px, 0);
+}
+.app-search .ui-selector.transmission > * {
+  background-size: 70%;
+}
+.app-search .ui-selector.transmission .m {
+  background-image: url(/assets/m.png);
+}
+.app-search .ui-selector.transmission .sa {
+  background-image: url(/assets/sa.png);
+}
+.app-search .ui-selector.transmission .a {
+  background-image: url(/assets/a.png);
+}
+.app-search .ui-selector.luggage .wrapper.show {
+  height: 270px;
+  -webkit-transform: translate3d(0, -270px, 0);
+  -moz-transform: translate3d(0, -270px, 0);
+  -o-transform: translate3d(0, -270px, 0);
+  transform: translate3d(0, -270px, 0);
+}
+.app-search .ui-selector.luggage .ui-selector-option {
+  margin: 1px 0 4px;
+}
+.app-search .ui-selector.class .wrapper.show {
+  height: 270px;
+  -webkit-transform: translate3d(0, -270px, 0);
+  -moz-transform: translate3d(0, -270px, 0);
+  -o-transform: translate3d(0, -270px, 0);
+  transform: translate3d(0, -270px, 0);
 }
 .app-search .ui-selector.class .small {
   background-image: url(/assets/small.png);
@@ -396,33 +480,32 @@ header a.active {
 .app-search .ui-selector.class .large {
   background-image: url(/assets/large.png);
 }
-@media (min-width: 768px) {
-  .app-search .content,
-  .app-search #map {
-    width: 50%;
-  }
-  .app-search .filter {
-    width: 50%;
-    position: relative;
-    z-index: 20;
-    margin: 0;
-    margin-left: 50%;
-  }
-  .app-search #map {
-    position: fixed!important;
-    height: auto;
-    bottom: 0;
-    top: 71px;
-  }
-  .app-search .content {
-    margin-left: 50%;
-    top: 170px;
-    bottom: 0;
-    display: block!important;
-  }
-  .app-search .ui-control {
-    display: none;
-  }
+.app-search .ui-selector.seats .wrapper.show {
+  height: 214px;
+  -webkit-transform: translate3d(0, -205px, 0);
+  -moz-transform: translate3d(0, -205px, 0);
+  -o-transform: translate3d(0, -205px, 0);
+  transform: translate3d(0, -205px, 0);
+}
+.app-search .ui-selector.seats .ui-selector-option {
+  margin: 1px 0 4px;
+}
+.app-search .ui-selector.seats .title,
+.app-search .ui-selector.luggage .title {
+  margin-top: 5px;
+}
+.app-search rzslider {
+  width: 90%;
+  margin-left: 5%;
+}
+.app-search .rz-pointer {
+  background-color: #FF683A;
+}
+.app-search .rz-pointer.rz-active:after {
+  background-color: #03A9F4;
+}
+.app-search .rz-selection {
+  background-color: #ffddd3 !important;
 }
 .simplebar,
 [data-simplebar-direction] {
@@ -508,18 +591,4 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
-}
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
 }
