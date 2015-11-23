@@ -28,7 +28,7 @@ class Car < ActiveRecord::Base
   end
 
   private
-  def to_bool s
+  def self.to_bool s
     s == "true"
   end
   #returns distance in meters
