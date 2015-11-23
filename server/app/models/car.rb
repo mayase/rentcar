@@ -1,8 +1,8 @@
 class Car < ActiveRecord::Base
-  def self.search(args={}):
+  def self.search(args={})
     current_scope = Car.all
     #equal filters
-    current_scope = current_scope.where(class: args[:class]) if args[:class]
+    current_scope = current_scope.where(class_id: args[:class]) if args[:class]
     current_scope = current_scope.where(seats: args[:seats]) if args[:seats]
     current_scope = current_scope.where(luggage: args[:luggage]) if args[:luggage]
     current_scope = current_scope.where(conditioning: args[:conditioning]) if args[:conditioning]

@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+car = Car.new(name: "toyota huyota")
+car.lat = 55.0
+car.lng = 37.0
+car.price = 700
+car.class_id = 3
+car.seats = 4
+car.luggage = 3
+car.conditioning = true
+car.transmission = 3
+car.availability_start_date = Date.today
+car.availability_end_date = Date.today
+car.save
