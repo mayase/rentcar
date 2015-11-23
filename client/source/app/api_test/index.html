@@ -4,28 +4,29 @@
         <fieldset>
             <legend>Search</legend>
 
-            <input type="number" placeholder="price_start">
-            <input type="number" placeholder="price_end">
-            <input type="number" placeholder="class">
-            <input type="number" placeholder="seats">
-            <input type="number" placeholder="luggage">
+            <input type="number" placeholder="price_start" ng-model="self.searchFormData.price_start">
+            <input type="number" placeholder="price_end" ng-model="self.searchFormData.price_end">
+            <input type="number" placeholder="class" ng-model="self.searchFormData.class">
+            <input type="number" placeholder="seats" ng-model="self.searchFormData.seats">
+            <input type="number" placeholder="luggage" ng-model="self.searchFormData.luggage">
             <label for="condit">Conditioning</label>
-            <input id="condit" type="checkbox" placeholder="conditioning">
+            <input id="condit" type="checkbox" placeholder="conditioning" ng-model="self.searchFormData.conditioning">
 
-            <input type="number" placeholder="transmission">
-            <input type="date" placeholder="availabilityStartDate">
-            <input type="date" placeholder="availabilityEndDate">
-            <input type="number" placeholder="boundaryTopLeftLat">
-            <input type="number" placeholder="boundaryTopLeftLng">
-            <input type="number" placeholder="boundaryBottomRightLat">
-            <input type="number" placeholder="boundaryBottomRightLng">
-            <input type="number" placeholder="userLat">
-            <input type="number" placeholder="userLng">
-            <input type="number" placeholder="top" value="10">
-            <input type="number" placeholder="offset" value="0">
+            <input type="number" placeholder="transmission" ng-model="self.searchFormData.transmission">
+            <input type="date" placeholder="availabilityStartDate" ng-model="self.searchFormData.availability_start_date">
+            <input type="date" placeholder="availabilityEndDate" ng-model="self.searchFormData.availability_end_date">
+            <input type="number" placeholder="boundaryTopLeftLat" ng-model="self.searchFormData.boundary_top_left_lat">
+            <input type="number" placeholder="boundaryTopLeftLng" ng-model="self.searchFormData.boundary_top_left_lng">
+            <input type="number" placeholder="boundaryBottomRightLat" ng-model="self.searchFormData.boundary_bottom_right_lat">
+            <input type="number" placeholder="boundaryBottomRightLng" ng-model="self.searchFormData.boundary_bottom_right_lng">
+            <input type="number" placeholder="userLat" ng-model="self.searchFormData.user_lat">
+            <input type="number" placeholder="userLng" ng-model="self.searchFormData.user_lng">
+            <input type="number" placeholder="top" value="10" ng-model="self.searchFormData.top">
+            <input type="number" placeholder="offset" value="0" ng-model="self.searchFormData.offset">
             <br>
-            <button type="submit" class="pure-button pure-button-primary">Go</button>
+            <button type="submit" class="pure-button pure-button-primary" ng-click="self.searchRequest()">Go</button>
         </fieldset>
     </form>
     <h3>Result</h3>
+    <article>{{self.searchResult}}</article>
 </div>
