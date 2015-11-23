@@ -1,12 +1,28 @@
 <div class="app-search">
     <div id="map"></div>
     <div class="filter">
-        <div class="ui-selector">
-            <div class="ui-selector-active" ng-hide="self.selectors.class.isActive"
-                 ng-click="self.selectors.class.isActive = true">{{self.selectors.class.value}}</div>
-            <div class="ui-selector-option">1</div>
-            <div class="ui-selector-option">2</div>
-            <div class="ui-selector-option">3</div>
+        <div class="ui-selector class">
+            <div class="ui-selector-active"
+                 ng-click="self.selectors.class.isActive = !self.selectors.class.isActive"
+                 ng-class="{small: self.selectors.class.value == 1,
+                            normal: self.selectors.class.value == 2,
+                            mid: self.selectors.class.value == 3,
+                            large: self.selectors.class.value == 4}"></div>
+            <div class="ui-selector-options" ng-class="{show: self.selectors.class.isActive}">
+                <div class="ui-selector-option small" ng-click="self.selectors.class.select(1)"></div>
+                <div class="ui-selector-option normal" ng-click="self.selectors.class.select(2)"></div>
+                <div class="ui-selector-option mid" ng-click="self.selectors.class.select(3)"></div>
+                <div class="ui-selector-option large" ng-click="self.selectors.class.select(4)"></div>
+            </div>
+        </div>
+        <div class="ui-selector transmission">
+            <div class="ui-selector-active"
+                 ng-click="self.selectors.class.isActive = !self.selectors.class.isActive"></div>
+            <div class="ui-selector-options" ng-class="{show: self.selectors.class.isActive}">
+                <div class="ui-selector-option" ng-click="self.selectors.class.select(1)"></div>
+                <div class="ui-selector-option" ng-click="self.selectors.class.select(2)"></div>
+                <div class="ui-selector-option" ng-click="self.selectors.class.select(3)"></div>
+            </div>
         </div>
     </div>
     <div class="content" ng-show="self.listActive" data-simplebar-direction="vertical">

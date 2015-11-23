@@ -160,6 +160,41 @@ h2{
     color: #FF683A;
   }
 }
+.ui-selector{
+  display: inline-block;
+  position: relative;
+  &>.ui-selector-options{
+    left: -7px;
+    background: #333;
+    border: 1px solid white;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 999px;
+    position: absolute;
+    height:0;
+    opacity:0;
+    z-index: 19;
+    overflow: hidden;
+    @transition_opt: transform 0.5s, height 0.5s, opacity 0.3s ease-in;
+    .transition(@transition_opt);
+    .translate3d(0,-20px,0);
+    &.show{
+      height: 200px;
+      opacity: 1;
+      .translate3d(0,-265px,0);
+    }
+    >*{
+      margin: 5px;
+    }
+  }
+  >.ui-selector-active,>.ui-selector-options>[class^=ui-selector]{
+    .ui-control;
+  }
+  >.ui-selector-active{
+    z-index: 20;
+    position: relative;
+  }
+}
 
 .button{
   margin: 10px;

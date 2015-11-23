@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'api/cars/search', to: "cars#search"
   resources :cars, except: [:new, :edit], path: 'api/cars'
   get 'api/cars/search', to: 'cars#search'
   # The priority is based upon order of creation: first created -> highest priority.
