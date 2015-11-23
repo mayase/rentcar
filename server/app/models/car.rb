@@ -1,5 +1,5 @@
 class Car < ActiveRecord::Base
-  def self.search(args={}):
+  def self.search(args={})
     current_scope = Car.all
     #equal filters
     current_scope = current_scope.where(class: args[:class]) if args[:class]

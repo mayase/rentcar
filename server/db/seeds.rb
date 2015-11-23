@@ -3,6 +3,17 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   cities = City.create([{ name: 'Chicago' },{ name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Car.create(name: "Toyota-huyota", lat: 55.0, lng: 37.0, price: 5000, class: 1, seats:4, luggage: 3, conditioning: false, transmission: 3, availability_start_date: Date.today, availability_end_date: Date.today + 2.days)
+car = Car.new
+  car.lat =  55.0
+  car.lng =  37.0
+  car.price =  5000
+  car.class =  1
+  car.seats = 4
+  car.luggage =  3
+  car.conditioning =  false
+  car.transmission = 3
+  car.availability_start_date =  Date
+  car.name = 'Toyota-huyota'
+car.save
