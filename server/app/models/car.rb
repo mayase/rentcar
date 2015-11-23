@@ -5,7 +5,7 @@ class Car < ActiveRecord::Base
     current_scope = current_scope.where(class_id: args[:class]) if args[:class]
     current_scope = current_scope.where(seats: args[:seats]) if args[:seats]
     current_scope = current_scope.where(luggage: args[:luggage]) if args[:luggage]
-    current_scope = current_scope.where(conditioning: args[:conditioning]) if args[:conditioning]
+    current_scope = current_scope.where(conditioning: to_bool(args[:conditioning])) if args[:conditioning]
     current_scope = current_scope.where(transmission: args[:transmission]) if args[:transmission]
 
     #gte lte checks
@@ -27,6 +27,10 @@ class Car < ActiveRecord::Base
     current_scope
   end
 
+  private
+  def to_bool s
+    s == "true"
+  end
   #returns distance in meters
   def distance loc1, loc2
     rad_per_deg = Math::PI/180
