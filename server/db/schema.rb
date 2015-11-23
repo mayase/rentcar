@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123132033) do
+ActiveRecord::Schema.define(version: 20151123175611) do
 
   create_table "cars", force: true do |t|
     t.string   "name"
     t.float    "lat"
     t.float    "lng"
     t.integer  "price"
-    t.integer  "class"
+    t.integer  "class_id"
     t.integer  "seats"
     t.integer  "luggage"
     t.boolean  "conditioning"
