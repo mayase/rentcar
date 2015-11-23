@@ -66,7 +66,12 @@ API
 
 **return:**
 
-JSON array of Car
+```javascript
+{
+  result: [Car]
+  total: total_number_of_cars_matching_request
+}
+```
 
 Фильтры на equal:
 ```
