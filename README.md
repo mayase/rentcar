@@ -50,7 +50,7 @@ API
     seats?, 
     luggage?, 
     conditioning?, 
-    transmitiion?, 
+    transmission?, 
     availabilityStartDate?, 
     availabilityEndDate?, 
     boundaryTopLeftLat?,
@@ -79,7 +79,7 @@ API
     seats?, 
     luggage?, 
     conditioning?, 
-    transmitiion?
+    transmission?
 ```
 Фильтры на gte, lte:
 ```
