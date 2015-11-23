@@ -1,4 +1,4 @@
-Rentcar 
+﻿Rentcar 
 ===
 Запуск сервера
 ---
@@ -10,8 +10,9 @@ Rentcar
 Настройка фронтового окружения
 ---
 1.  установить [node.js](https://nodejs.org/en/)
-2.  установка треубемых пакетов  `rentcar\client> npm install | bower install`
-3.  запуск фронта для дева (сервер должен быть запущен и слушать localhost:3000) `gulp run`
+2.  установить bower `npm install -g bower`
+3.  установка треубемых пакетов  `rentcar\client> npm install | bower install`
+4.  запуск фронта для дева (сервер должен быть запущен и слушать localhost:3000) `gulp run`
 
 
 API
