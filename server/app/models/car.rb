@@ -9,14 +9,14 @@ class Car < ActiveRecord::Base
     current_scope = current_scope.where(transmission: args[:transmission]) if args[:transmission]
 
     #gte lte checks
-    current_scope = current_scope.where('availability_start_date <= ?', params[:availability_start_date]) if params[:availability_start_date]
-    current_scope = current_scope.where('price <= ?', params[:price_start]) if params[:price_start]
-    current_scope = current_scope.where('lat <= ?', params[:boundary_bottom_right_lat]) if params[:boundary_bottom_right_lat]
-    current_scope = current_scope.where('lng <= ?', params[:boundary_top_left_lng]) if params[:boundary_top_left_lng]
-    current_scope = current_scope.where('availability_end_date >= ?', params[:availability_end_date]) if params[:availability_end_date]
-    current_scope = current_scope.where('price >= ?', params[:price_end]) if params[:price_end]
-    current_scope = current_scope.where('lat >= ?', params[:boundary_top_left_lat]) if params[:boundary_top_left_lat]
-    current_scope = current_scope.where('lng >= ?', params[:boundary_bottom_right_lng]) if params[:boundary_bottom_right_lng]
+    current_scope = current_scope.where('availability_start_date <= ?', args[:availability_start_date]) if args[:availability_start_date]
+    current_scope = current_scope.where('price <= ?', args[:price_start]) if args[:price_start]
+    current_scope = current_scope.where('lat <= ?', args[:boundary_bottom_right_lat]) if args[:boundary_bottom_right_lat]
+    current_scope = current_scope.where('lng <= ?', args[:boundary_top_left_lng]) if args[:boundary_top_left_lng]
+    current_scope = current_scope.where('availability_end_date >= ?', args[:availability_end_date]) if args[:availability_end_date]
+    current_scope = current_scope.where('price >= ?', args[:price_end]) if args[:price_end]
+    current_scope = current_scope.where('lat >= ?', args[:boundary_top_left_lat]) if args[:boundary_top_left_lat]
+    current_scope = current_scope.where('lng >= ?', args[:boundary_bottom_right_lng]) if args[:boundary_bottom_right_lng]
 
     #sorting if needed
     if (args[:user_lat] && args[:user_lng])
