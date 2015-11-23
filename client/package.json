@@ -1,6 +1,6 @@
 {
-  "name": "TourFolio",
-  "description": "From tourist to walker",
+  "name": "rentcar",
+  "description": "Test task",
   "author": "Maxim Yakovlev",
   "dependencies": {
     "gulp": "3.9.0",
