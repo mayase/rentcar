@@ -2,13 +2,14 @@
     <div id="map"></div>
     <div class="filter">
         <div class="ui-selector">
-            <div class="ui-selector-active">1</div>
+            <div class="ui-selector-active" ng-hide="self.selectors.class.isActive"
+                 ng-click="self.selectors.class.isActive = true">{{self.selectors.class.value}}</div>
             <div class="ui-selector-option">1</div>
             <div class="ui-selector-option">2</div>
             <div class="ui-selector-option">3</div>
         </div>
     </div>
-    <div class="content" ng-show="ctrl.listActive" data-simplebar-direction="vertical">
+    <div class="content" ng-show="self.listActive" data-simplebar-direction="vertical">
         <div class="item">
             <div class="title">
                 Car Number One
@@ -22,14 +23,14 @@
         </div>
     </div>
     <div style="clear:both;"></div>
-    <!--ng-class="{show: ctrl.listActive, hide: !ctrl.listActive}"-->
+    <!--ng-class="{show: self.listActive, hide: !self.listActive}"-->
     <div class="ui-control listMapToggle"
-         ng-click="ctrl.listActive = !ctrl.listActive">
-        <i class="fa fa-map-o" ng-show="ctrl.listActive"></i>
-        <i class="fa fa-list-ul" ng-hide="ctrl.listActive"></i>
+         ng-click="self.listActive = !self.listActive">
+        <i class="fa fa-map-o" ng-show="self.listActive"></i>
+        <i class="fa fa-list-ul" ng-hide="self.listActive"></i>
         <div class="addon">10</div>
     </div>
-    <div class="ui-control mapSearch" ng-click="" ng-hide="ctrl.listActive">
+    <div class="ui-control mapSearch" ng-click="" ng-hide="self.listActive">
         Поиск по карте <i class="fa fa-refresh"></i>
     </div>
 </div>

@@ -7,6 +7,16 @@
 
         var self = this;
 
+        self.value = 'hello';
+
+        self.selectors = {
+            class: {
+                value: '1',
+                isActive: false
+            }
+        };
+
+
         //map
         var map;
 
