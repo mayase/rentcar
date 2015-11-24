@@ -70,7 +70,9 @@ API
 ```javascript
 {
   result: [Car]
-  total: total_number_of_cars_matching_request
+  total: int, total_number_of_cars_matching_request,
+  price_min: int,
+  price_max: int
 }
 ```
 
