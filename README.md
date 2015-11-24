@@ -29,8 +29,8 @@ API
   lng: float,
   price: int,
   class: int, values [0, 1, 2, 3, 4] => ['undef', 'two-seats', 'small', 'mid', 'large']
-  seats: int, values [2, 4, 5+]
-  luggage: int, values [1, 2, 3, 4+]
+  seats: int, values [0, 1, 2, 3] => ['undef', 2, 4, 5+]
+  luggage: int, values [0, 1, 2, 3, 4] => ['undef', 1, 2, 3, 4+]
   conditioning: boolean,
   transmission: int, values [0, 1, 2, 3] => ['undef', 'manual', 'semi-automatic', 'automatic'],
   availabilityStartDate: Date,
