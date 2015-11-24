@@ -58,6 +58,8 @@ class CarsController < ApplicationController
     offser = params[:offset].to_i if params[:offset]
     #render response
     response = Hash.new
+    response[:max_price] = found_cars.max_by{|x| x.price}[:price]
+    response[:min_price] = found_cars.min_by{|x| x.price}[:price]
     response[:total] = found_cars.length
     response[:result] = found_cars[offset..top - offset - 1]
     render json: response
