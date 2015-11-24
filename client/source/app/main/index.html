@@ -58,7 +58,17 @@
             </div>
             <div class="title">Багаж</div>
         </div>
-        <input type="text" class="form-control datepicker">
+        <form class="pure-form pure-form-aligned ui-control-datepickers">
+            <div class="pure-control-group ui-control-datepicker" ng-click="self.openFrom()">
+                <label class="title">С:</label>
+                <input type="text" class="form-control datepickerFrom" ng-model="self.dateFromValue">
+            </div>
+            <div class="pure-control-group ui-control-datepicker" ng-click="self.openTo()">
+                <label class="title">По:</label>
+                <input type="text" class="form-control datepickerTo" ng-model="self.dateToValue">
+            </div>
+        </form>
+
         <rzslider
                 rz-slider-model="self.priceSlider.min"
                 rz-slider-high="self.priceSlider.max"

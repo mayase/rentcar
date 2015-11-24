@@ -96,12 +96,21 @@
 
         var self = this;
 
-        self.value = 'hello';
         setTimeout(function(){
-            console.log($('.datepicker'));
-            $('.datepicker').datepicker({
+            console.log($('.datepickerFrom'));
+            $('.datepickerFrom').datepicker({
+                startDate: new Date(),
+                format: 'dd.mm.yyyy'
+            });
+            $('.datepickerTo').datepicker({
+                startDate: new Date(),
+                format: 'dd.mm.yyyy'
             });
         });
+
+        self.dateFromValue = $.datepicker.formatDate('dd.mm.yy', new Date());
+        self.dateToValue = $.datepicker.formatDate('dd.mm.yy', new Date());
+
         self.priceSlider = {
             min: 100,
             max: 900,

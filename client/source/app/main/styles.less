@@ -1,5 +1,5 @@
 @header-height: 71px;
-@filter-height: 200px;
+@filter-height: 120px;
 .app-search{
   position: absolute;
   top: @header-height;
@@ -16,9 +16,11 @@
     top: 100%;
     width: 100%;
     margin-top: -@filter-height;
-    height: @filter-height;
+    //height: @filter-height;
     //overflow: hidden;
     background-color: #333;
+    height: auto;
+    min-height: 200px;
   }
   .content{
     position: absolute;
@@ -44,9 +46,9 @@
       right: 10px;
     }
     &.mapSearch{
-      position: absolute;
+      position: fixed;
       margin: 0;
-      top: 10px;
+      top: 10px + @header-height;
       right: 10px;
       width: auto;
       padding-right: 16px;
@@ -140,33 +142,56 @@
   .rz-selection{
     background-color: lighten(#FF683A, 30%)!important;
   }
-  //@media (min-width: 768px) {
-  //  .content,#map,{
-  //    width: 50%;
-  //  }
-  //  .filter{
-  //    width: 50%;
-  //    position: relative;
-  //    z-index: 20;
-  //    margin: 0;
-  //    margin-left: 50%;
-  //  }
-  //  #map{
-  //    position: fixed!important;
-  //    height: auto;
-  //    bottom: 0;
-  //    top: @header-height;
-  //  }
-  //  .content{
-  //    margin-left: 50%;
-  //    top: @filter-height;
-  //    bottom: 0;
-  //    display: block!important;
-  //  }
-  //  .ui-control{
-  //    display: none;
-  //  }
-  //}
+  .ui-control-datepickers{
+    display: inline-block;
+    vertical-align: text-top;
+    margin-left: 10px;
+    .ui-control-datepicker{
+      margin: 5px 0;
+      >*{
+        display: inline-block;
+      }
+      .title{
+        color: whitesmoke;
+        font-size: 14px;
+        width: 35px;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    @filter-height-big: 200px;
+    rzslider{
+      display: inline-block;
+      width: 400px;
+      margin-left: 5%;
+    }
+    .filter{
+      margin-top: -@filter-height-big;
+      min-height: @filter-height-big;
+    }
+    #map{
+      position: fixed!important;
+      height: auto;
+      bottom: @filter-height-big;
+      left: 0;
+      right: 50%;
+      width: auto;
+      top: @header-height;
+    }
+    .content{
+      left: 50%;
+      right: 0;
+      width: auto;
+      display: block!important;
+      bottom: @filter-height-big;
+    }
+    .ui-control.listMapToggle{
+      display: none;
+    }
+    .ui-control.mapSearch{
+      right:52%!important;
+    }
+  }
 }
 
 .simplebar, [data-simplebar-direction] {

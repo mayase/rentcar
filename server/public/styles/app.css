@@ -356,20 +356,6 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
-}
 .app-search {
   position: absolute;
   top: 71px;
@@ -388,15 +374,16 @@ header a.active {
   position: absolute;
   top: 100%;
   width: 100%;
-  margin-top: -200px;
-  height: 200px;
+  margin-top: -120px;
   background-color: #333;
+  height: auto;
+  min-height: 200px;
 }
 .app-search .content {
   position: absolute;
   top: 0;
   width: 100%;
-  bottom: 200px;
+  bottom: 120px;
   overflow: auto;
   background-color: whitesmoke;
 }
@@ -404,21 +391,21 @@ header a.active {
   position: absolute!important;
   top: 0;
   width: 100%;
-  bottom: 200px;
+  bottom: 120px;
 }
 .app-search .ui-control.view {
   position: absolute;
   z-index: 20;
   top: 100%;
-  margin-top: -230px;
+  margin-top: -150px;
 }
 .app-search .ui-control.view.listMapToggle {
   right: 10px;
 }
 .app-search .ui-control.view.mapSearch {
-  position: absolute;
+  position: fixed;
   margin: 0;
-  top: 10px;
+  top: 81px;
   right: 10px;
   width: auto;
   padding-right: 16px;
@@ -507,6 +494,55 @@ header a.active {
 .app-search .rz-selection {
   background-color: #ffddd3 !important;
 }
+.app-search .ui-control-datepickers {
+  display: inline-block;
+  vertical-align: text-top;
+  margin-left: 10px;
+}
+.app-search .ui-control-datepickers .ui-control-datepicker {
+  margin: 5px 0;
+}
+.app-search .ui-control-datepickers .ui-control-datepicker > * {
+  display: inline-block;
+}
+.app-search .ui-control-datepickers .ui-control-datepicker .title {
+  color: whitesmoke;
+  font-size: 14px;
+  width: 35px;
+}
+@media (min-width: 1024px) {
+  .app-search rzslider {
+    display: inline-block;
+    width: 400px;
+    margin-left: 5%;
+  }
+  .app-search .filter {
+    margin-top: -200px;
+    min-height: 200px;
+  }
+  .app-search #map {
+    position: fixed!important;
+    height: auto;
+    bottom: 200px;
+    left: 0;
+    right: 50%;
+    width: auto;
+    top: 71px;
+  }
+  .app-search .content {
+    left: 50%;
+    right: 0;
+    width: auto;
+    display: block!important;
+    bottom: 200px;
+  }
+  .app-search .ui-control.listMapToggle {
+    display: none;
+  }
+  .app-search .ui-control.mapSearch {
+    right: 52%!important;
+  }
+}
 .simplebar,
 [data-simplebar-direction] {
   position: relative;
@@ -591,4 +627,18 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
+}
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
 }
