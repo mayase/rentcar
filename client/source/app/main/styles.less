@@ -57,6 +57,14 @@
       }
     }
   }
+  .total{
+    display: none;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #FF683A;
+    color: #FF683A;
+    font-size: 16px;
+  }
   .ui-selector{
 
     .ui-selector-option,.ui-selector-active{
@@ -64,26 +72,27 @@
       text-align: left!important;
       font-weight: bolder;
     }
-
+    .default{
+      background-image: url(/assets/default.png);
+      background-size: 70%;
+    }
     &.transmission{
       @height: 270px;
       .wrapper.show{
         height: @height;
         .translate3d(0,-@height,0);
       }
-      >*{
-        background-size: 70%;
-      }
-      .m{
-        background-image: url(/assets/m.png);
-      }
-      .sa{
-        background-image: url(/assets/sa.png);
-      }
-      .a{
-        background-image: url(/assets/a.png);
-      }
+      .transmission-types;
     }
+    &.class{
+      @height: 335px;
+      .wrapper.show{
+        height: @height;
+        .translate3d(0,-@height,0);
+      }
+      .class-types;
+    }
+
     &.luggage{
       @height: 330px;
       .wrapper.show{
@@ -96,29 +105,6 @@
           margin-bottom: 1px;
         }
       }
-    }
-    &.class{
-      @height: 335px;
-      .wrapper.show{
-        height: @height;
-        .translate3d(0,-@height,0);
-      }
-      .small{
-        background-image: url(/assets/small.png);
-      }
-      .normal{
-        background-image: url(/assets/normal.png);
-      }
-      .mid{
-        background-image: url(/assets/mid.png);
-      }
-      .large{
-        background-image: url(/assets/large.png);
-      }
-    }
-    .default{
-      background-image: url(/assets/default.png);
-      background-size: 70%;
     }
     &.seats{
       @height: 265px;
@@ -137,6 +123,34 @@
       .title{
         margin-top: 5px;
       }
+    }
+  }
+  .transmission-types{
+    >*{
+      background-size: 70%;
+    }
+    .m{
+      background-image: url(/assets/m.png);
+    }
+    .sa{
+      background-image: url(/assets/sa.png);
+    }
+    .a{
+      background-image: url(/assets/a.png);
+    }
+  }
+  .class-types{
+    .small{
+      background-image: url(/assets/small.png);
+    }
+    .normal{
+      background-image: url(/assets/normal.png);
+    }
+    .mid{
+      background-image: url(/assets/mid.png);
+    }
+    .large{
+      background-image: url(/assets/large.png);
     }
   }
   rzslider{
@@ -168,8 +182,102 @@
       }
     }
   }
+
+
+  .item{
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: #ECECEC;
+    >.title{
+      font-weight: bolder;
+      padding: 5px 5px 15px;
+    }
+    .item-content{
+      >*{
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .item-stats{
+      width: 55%;
+      >*{
+        display: inline-block;
+        text-align: center;
+        width: 70px;
+        vertical-align: text-top;
+        margin: 0 10px;
+      }
+      .title{
+        font-size: 16px;
+      }
+    }
+    .availability{
+      display: block;
+      width: auto;
+      text-align: left;
+      word-spacing: 12px;
+      padding: 25px 0;
+      font-size: 16px;
+      span{
+        padding-left: 10px;
+        color: #FF683A;
+      }
+    }
+    .stat{
+      .stat-value{
+        font-size: 40px;
+        border: 1px solid;
+        display: inline-block;
+        width: 60px;
+        height: 0;
+        padding-bottom: 54px;
+        padding-top: 5px;
+        border-radius: 999px;
+        margin-bottom: 5px;
+        background-color: whitesmoke;
+      }
+    }
+    .icon-stat-image{
+      .ui-control;
+      display: inline-block;
+      background: whitesmoke no-repeat center / 80%;
+      box-shadow: none;
+      border: 1px solid black;
+    }
+    .transmission-types;
+    .class-types;
+    .show-on-map{
+      color: #279ED4;
+      padding: 5px 15px;
+      border: 1px solid #279ED4;
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 18px;
+      background-color: whitesmoke;
+    }
+    .item-rent{
+      width: 40%;
+      text-align: center;
+      .price{
+        font-size: 40px;
+        color: #FF683A;
+        line-height: 25px;
+        padding-bottom: 10px;
+        span{
+          font-size: 20px;
+          display: inline-block;
+        }
+      }
+    }
+  }
   @media (min-width: 1024px) {
     @filter-height-big: 200px;
+    .total{
+      display: block;
+    }
     rzslider{
       display: inline-block;
       width: 400px;

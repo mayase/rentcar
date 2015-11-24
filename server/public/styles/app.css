@@ -215,9 +215,11 @@ h2 {
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
-  padding: 6px;
-  margin-left: -15px;
+  padding: 6px 12px 4px 10px;
   color: #FF683A;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
 }
 .ui-selector {
   display: inline-block;
@@ -281,9 +283,11 @@ h2 {
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
-  padding: 6px;
-  margin-left: -15px;
+  padding: 6px 12px 4px 10px;
   color: #FF683A;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
 }
 .ui-selector .wrapper > .ui-selector-options {
   width: 65px;
@@ -316,9 +320,11 @@ h2 {
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
-  padding: 6px;
-  margin-left: -15px;
+  padding: 6px 12px 4px 10px;
   color: #FF683A;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
 }
 .button {
   margin: 10px;
@@ -355,6 +361,20 @@ header a:not(.active):hover {
 }
 header a.active {
   color: #00BCD4;
+}
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
 }
 .app-search {
   position: absolute;
@@ -413,11 +433,23 @@ header a.active {
 .app-search .ui-control.view.mapSearch i {
   margin-left: 10px;
 }
+.app-search .total {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #FF683A;
+  color: #FF683A;
+  font-size: 16px;
+}
 .app-search .ui-selector .ui-selector-option,
 .app-search .ui-selector .ui-selector-active {
   background: whitesmoke no-repeat center / 80%;
   text-align: left!important;
   font-weight: bolder;
+}
+.app-search .ui-selector .default {
+  background-image: url(/assets/default.png);
+  background-size: 70%;
 }
 .app-search .ui-selector.transmission .wrapper.show {
   height: 270px;
@@ -438,19 +470,6 @@ header a.active {
 .app-search .ui-selector.transmission .a {
   background-image: url(/assets/a.png);
 }
-.app-search .ui-selector.luggage .wrapper.show {
-  height: 330px;
-  -webkit-transform: translate3d(0, -330px, 0);
-  -moz-transform: translate3d(0, -330px, 0);
-  -o-transform: translate3d(0, -330px, 0);
-  transform: translate3d(0, -330px, 0);
-}
-.app-search .ui-selector.luggage .ui-selector-option {
-  margin: 1px 0 2px;
-}
-.app-search .ui-selector.luggage .ui-selector-option:last-of-type {
-  margin-bottom: 1px;
-}
 .app-search .ui-selector.class .wrapper.show {
   height: 335px;
   -webkit-transform: translate3d(0, -335px, 0);
@@ -470,9 +489,18 @@ header a.active {
 .app-search .ui-selector.class .large {
   background-image: url(/assets/large.png);
 }
-.app-search .ui-selector .default {
-  background-image: url(/assets/default.png);
-  background-size: 70%;
+.app-search .ui-selector.luggage .wrapper.show {
+  height: 330px;
+  -webkit-transform: translate3d(0, -330px, 0);
+  -moz-transform: translate3d(0, -330px, 0);
+  -o-transform: translate3d(0, -330px, 0);
+  transform: translate3d(0, -330px, 0);
+}
+.app-search .ui-selector.luggage .ui-selector-option {
+  margin: 1px 0 2px;
+}
+.app-search .ui-selector.luggage .ui-selector-option:last-of-type {
+  margin-bottom: 1px;
 }
 .app-search .ui-selector.seats .wrapper.show {
   height: 265px;
@@ -490,6 +518,30 @@ header a.active {
 .app-search .ui-selector.seats .title,
 .app-search .ui-selector.luggage .title {
   margin-top: 5px;
+}
+.app-search .transmission-types > * {
+  background-size: 70%;
+}
+.app-search .transmission-types .m {
+  background-image: url(/assets/m.png);
+}
+.app-search .transmission-types .sa {
+  background-image: url(/assets/sa.png);
+}
+.app-search .transmission-types .a {
+  background-image: url(/assets/a.png);
+}
+.app-search .class-types .small {
+  background-image: url(/assets/small.png);
+}
+.app-search .class-types .normal {
+  background-image: url(/assets/normal.png);
+}
+.app-search .class-types .mid {
+  background-image: url(/assets/mid.png);
+}
+.app-search .class-types .large {
+  background-image: url(/assets/large.png);
 }
 .app-search rzslider {
   width: 90%;
@@ -520,7 +572,141 @@ header a.active {
   font-size: 14px;
   width: 35px;
 }
+.app-search .item {
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: #ECECEC;
+}
+.app-search .item > .title {
+  font-weight: bolder;
+  padding: 5px 5px 15px;
+}
+.app-search .item .item-content > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.app-search .item .item-stats {
+  width: 55%;
+}
+.app-search .item .item-stats > * {
+  display: inline-block;
+  text-align: center;
+  width: 70px;
+  vertical-align: text-top;
+  margin: 0 10px;
+}
+.app-search .item .item-stats .title {
+  font-size: 16px;
+}
+.app-search .item .availability {
+  display: block;
+  width: auto;
+  text-align: left;
+  word-spacing: 12px;
+  padding: 25px 0;
+  font-size: 16px;
+}
+.app-search .item .availability span {
+  padding-left: 10px;
+  color: #FF683A;
+}
+.app-search .item .stat .stat-value {
+  font-size: 40px;
+  border: 1px solid;
+  display: inline-block;
+  width: 60px;
+  height: 0;
+  padding-bottom: 54px;
+  padding-top: 5px;
+  border-radius: 999px;
+  margin-bottom: 5px;
+  background-color: whitesmoke;
+}
+.app-search .item .icon-stat-image {
+  background-color: whitesmoke;
+  height: 0;
+  width: 40px;
+  border-radius: 999px;
+  box-shadow: 2px 2px 4px #3f3b4e;
+  padding: 20px 0 40px 20px;
+  text-align: initial;
+  color: #35333B;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  display: inline-block;
+  background: whitesmoke no-repeat center / 80%;
+  box-shadow: none;
+  border: 1px solid black;
+}
+.app-search .item .icon-stat-image .addon {
+  background-color: inherit;
+  border-radius: 99px;
+  display: inline-block;
+  padding: 6px 12px 4px 10px;
+  color: #FF683A;
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+}
+.app-search .item > * {
+  background-size: 70%;
+}
+.app-search .item .m {
+  background-image: url(/assets/m.png);
+}
+.app-search .item .sa {
+  background-image: url(/assets/sa.png);
+}
+.app-search .item .a {
+  background-image: url(/assets/a.png);
+}
+.app-search .item .small {
+  background-image: url(/assets/small.png);
+}
+.app-search .item .normal {
+  background-image: url(/assets/normal.png);
+}
+.app-search .item .mid {
+  background-image: url(/assets/mid.png);
+}
+.app-search .item .large {
+  background-image: url(/assets/large.png);
+}
+.app-search .item .show-on-map {
+  color: #279ED4;
+  padding: 5px 15px;
+  border: 1px solid #279ED4;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: whitesmoke;
+}
+.app-search .item .item-rent {
+  width: 40%;
+  text-align: center;
+}
+.app-search .item .item-rent .price {
+  font-size: 40px;
+  color: #FF683A;
+  line-height: 25px;
+  padding-bottom: 10px;
+}
+.app-search .item .item-rent .price span {
+  font-size: 20px;
+  display: inline-block;
+}
 @media (min-width: 1024px) {
+  .app-search .total {
+    display: block;
+  }
   .app-search rzslider {
     display: inline-block;
     width: 400px;
@@ -637,18 +823,4 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
-}
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
 }

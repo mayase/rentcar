@@ -96,10 +96,16 @@
 
         var self = this;
 
+        self.bounds = {
+            boundary_top_left_lat: null,
+            boundary_top_left_lng: null,
+            boundary_bottom_right_lat: null,
+            boundary_bottom_right_lng: null
+        };
+
         setTimeout(function(){
-            console.log($('.datepickerFrom'));
             $('.datepickerFrom').datepicker({
-                startDate: new Date(),
+                //startDate: new Date(),
                 format: 'dd.mm.yyyy'
             });
             $('.datepickerTo').datepicker({
@@ -173,12 +179,50 @@
                 }
             }
         };
+        self.mappers = {
+            class_id:{
+                0: 'Неизвестно',
+                1: 'Компактная',
+                2: 'Седан',
+                3: 'Хэтчбэк',
+                4: 'Минивэн+'
+            },
+            transmission:{
+                0: 'Неизвестно',
+                1: 'Механика',
+                2: 'Полуавтомат',
+                3: 'Автомат'
+            }
+        };
+        self.formatDate = function(date){return $.datepicker.formatDate('dd.mm.yy', new Date(date));};
+        self.showOnMap = showOnMap;
+        self.search = searchHandler;
+
+        function showOnMap(id){
+            for (var marker_key in markers){
+                var marker = markers[marker_key];
+                if (marker.id == id){
+                    console.log('found');
+                    map.panTo(marker.position);
+                    if (map.getZoom() < 14) map.setZoom(14);
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                    setTimeout(function(){ marker.setAnimation(null); }, 2150);
+                    break;
+                }
+            }
+        }
 
         function getSearchParams(){
             var params = {};
+            if(self.priceSlider.min > self.priceSlider.max){
+                params.price_start = self.priceSlider.max;
+                params.price_end = self.priceSlider.min;
+            }
+            else{
+                params.price_start = self.priceSlider.min;
+                params.price_end = self.priceSlider.max;
+            }
 
-            params.price_start = self.priceSlider.min;
-            params.price_end = self.priceSlider.max;
 
             if (self.selectors.class.value != '0')
                 params.class_id = self.selectors.class.value;
@@ -194,6 +238,10 @@
             if (self.dateToValue)
                 params.availability_end_date = $.datepicker.parseDate('dd.mm.yy', self.dateToValue);
 
+            for (var key in self.bounds){
+                params[key] = self.bounds[key];
+            }
+
             return params;
         }
 
@@ -206,7 +254,7 @@
         var searchTimeoutTime = 1000;
         var searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
         function searchHandler(){
-
+            self.newBounds = false;
             if (searchTimeout){
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
@@ -216,12 +264,18 @@
             var params = getSearchParams();
             console.log('REQUEST');
             console.log(params);
+            self.newBounds = false;
 
             Restangular.all('api').one('cars/search').get(params).then(function(data){
                     console.log(data.plain());
                     if (data.min_price != 0 || data.max_price != 0){
                         self.priceSlider.options.floor = data.min_price;
                         self.priceSlider.options.ceil = data.max_price;
+                        if (self.priceSlider.min > self.priceSlider.max){
+                            var temp = self.priceSlider.min;
+                            self.priceSlider.min = self.priceSlider.max;
+                            self.priceSlider.max = temp;
+                        }
                         if (self.priceSlider.min < self.priceSlider.options.floor){
                             self.priceSlider.min = self.priceSlider.options.floor;
                         }
@@ -229,10 +283,13 @@
                             self.priceSlider.max = self.priceSlider.options.ceil;
                         }
                     }
-
+                    self.items = data.result;
+                    self.searchTotal = data.total;
+                    setMarkers();
                 },
                 function(error){
                     console.log(error);
+                    self.newBounds = true;
                 }
             )
         }
@@ -249,29 +306,61 @@
             map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
             map.setZoom(13);
+
+            map.addListener('bounds_changed', function() {
+                var bounds = map.getBounds(),
+                    ne = bounds.getNorthEast(),
+                    sw = bounds.getSouthWest(),
+                    nw = new google.maps.LatLng(ne.lat(), sw.lng()),
+                    se = new google.maps.LatLng(sw.lat(), ne.lng());
+                self.bounds.boundary_top_left_lat = nw.lat();
+                self.bounds.boundary_top_left_lng = nw.lng();
+                self.bounds.boundary_bottom_right_lat= se.lat();
+                self.bounds.boundary_bottom_right_lng = se.lng();
+                self.newBounds = true;
+                $scope.$digest();
+            });
         }
 
-        function setMarkers() {
-            //for (var bar_key in self.bars) {
-            //    (function () {
-            //        var bar = self.bars[bar_key];
-            //        if (bar.lat !== null &&
-            //            bar.lng !== null) {
-            //            var marker = new google.maps.Marker({
-            //                map: map,
-            //                position: {
-            //                    lat: bar.lat,
-            //                    lng: bar.lng
-            //                },
-            //                bar: bar
-            //            });
-            //
-            //            google.maps.event.addListener(marker, 'click', function () {
-            //                showBarInfoSnippet(marker);
-            //            });
-            //        }
-            //    })();
-            //}
+        var markers = [];
+        function showItemSnippet(item){
+            console.log(item);
+            for (var marker_key in markers){
+                if (marker[marker_key].id == item.id){
+                    console.log('found');
+                    marker[marker_key].setAnimation(google.maps.Animation.BOUNCE);
+                    break;
+                }
+            }
+        }
+        function setMarkers(lazy) {
+            if(!lazy) {
+                for (var i in markers) markers[i].setMap(null);
+                markers = [];
+            }
+            for (var item_key in self.items) {
+                (function () {
+                    var item = self.items[item_key];
+                    if (item.lat !== null &&
+                        item.lng !== null) {
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: {
+                                lat: item.lat,
+                                lng: item.lng
+                            },
+                            data: item,
+                            id: item.id
+                        });
+
+                        google.maps.event.addListener(marker, 'click', function () {
+                            showItemSnippet(marker);
+                        });
+
+                        markers.push(marker);
+                    }
+                })();
+            }
         }
 
         initialize();

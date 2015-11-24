@@ -83,27 +83,60 @@
                 rz-slider-options="self.priceSlider.options"></rzslider>
     </div>
     <div class="content" ng-show="self.listActive" data-simplebar-direction="vertical">
-        <div class="item">
+        <div class="total">Всего результатов: {{self.searchTotal}}</div>
+        <div class="item" ng-repeat="item in self.items">
             <div class="title">
-                Car Number One
+                {{item.name}}
             </div>
-            <div class="title">
-                Car Number Two
+            <div class="item-content">
+                <div class="item-stats">
+                    <div class="icon-stat">
+                        <div class="icon-stat-image-wrapper">
+                            <div class="icon-stat-image" ng-class="{default: item.class_id == 0,
+                            small: item.class_id == 1,
+                            normal: item.class_id == 2,
+                            mid: item.class_id == 3,
+                            large: item.class_id == 4}"></div>
+                        </div>
+                        <div class="title">{{self.mappers.class_id[item.class_id]}}</div>
+                    </div>
+                    <div class="icon-stat">
+                        <div class="icon-stat-image-wrapper">
+                            <div class="icon-stat-image" ng-class="{default: item.transmission == 0,
+                            m: item.transmission == 1,
+                            sa: item.transmission == 2,
+                            a: item.transmission == 3}"></div>
+                        </div>
+                        <div class="title">{{self.mappers.transmission[item.transmission]}}</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">{{item.seats}}</div>
+                        <div class="title">Количество мест</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">{{item.luggage}}</div>
+                        <div class="title">Мест багажа</div>
+                    </div>
+                    <div class="availability">
+                        Доступность:  <span>{{self.formatDate(item.availability_start_date)}}  -  {{self.formatDate(item.availability_end_date)}}</span>
+                    </div>
+                </div>
+                <div class="item-rent">
+                    <div class="price">{{item.price}} <span>руб./день</span></div>
+                    <div class="pure-button pure-button-primary">Бронировать</div>
+                </div>
             </div>
-            <div class="title">
-                Car Number Three
-            </div>
+            <div class="show-on-map" ng-click="self.showOnMap(item.id)"><i class="fa fa-map-marker"></i> Показать на карте</div>
         </div>
     </div>
     <div style="clear:both;"></div>
-    <!--ng-class="{show: self.listActive, hide: !self.listActive}"-->
     <div class="ui-control view listMapToggle"
          ng-click="self.listActive = !self.listActive">
         <i class="fa fa-map-o" ng-show="self.listActive"></i>
         <i class="fa fa-list-ul" ng-hide="self.listActive"></i>
-        <div class="addon">10</div>
+        <div class="addon">{{self.searchTotal}}</div>
     </div>
-    <div class="ui-control view mapSearch" ng-click="" ng-hide="self.listActive">
+    <div class="ui-control view mapSearch" ng-click="self.search()" ng-disabled="!self.newBounds">
         Искать здесь <i class="fa fa-refresh"></i>
     </div>
 </div>
