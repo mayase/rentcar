@@ -4,7 +4,8 @@
         <div class="ui-selector class">
             <div class="ui-selector-active"
                  ng-click="self.selectors.class.isActive = !self.selectors.class.isActive"
-                 ng-class="{small: self.selectors.class.value == 1,
+                 ng-class="{default: self.selectors.class.value == 0,
+                            small: self.selectors.class.value == 1,
                             normal: self.selectors.class.value == 2,
                             mid: self.selectors.class.value == 3,
                             large: self.selectors.class.value == 4}"></div>
@@ -14,6 +15,7 @@
                     <div class="ui-selector-option normal" ng-click="self.selectors.class.select(2)"></div>
                     <div class="ui-selector-option mid" ng-click="self.selectors.class.select(3)"></div>
                     <div class="ui-selector-option large" ng-click="self.selectors.class.select(4)"></div>
+                    <div class="ui-selector-option default" ng-click="self.selectors.class.select(0)"></div>
                 </div>
             </div>
             <div class="title">Класс</div>
@@ -21,7 +23,8 @@
         <div class="ui-selector transmission">
             <div class="ui-selector-active"
                  ng-click="self.selectors.transmission.isActive = !self.selectors.transmission.isActive"
-                 ng-class="{m: self.selectors.transmission.value == 1,
+                 ng-class="{default: self.selectors.transmission.value == 0,
+                            m: self.selectors.transmission.value == 1,
                             sa: self.selectors.transmission.value == 2,
                             a: self.selectors.transmission.value == 3}"></div>
             <div class="wrapper" ng-class="{show: self.selectors.transmission.isActive}">
@@ -29,24 +32,28 @@
                     <div class="ui-selector-option m" ng-click="self.selectors.transmission.select(1)"></div>
                     <div class="ui-selector-option sa" ng-click="self.selectors.transmission.select(2)"></div>
                     <div class="ui-selector-option a" ng-click="self.selectors.transmission.select(3)"></div>
+                    <div class="ui-selector-option default" ng-click="self.selectors.transmission.select(0)"></div>
                 </div>
             </div>
             <div class="title">Коробка передач</div>
         </div>
         <div class="ui-selector seats">
             <div class="ui-selector-active"
+                 ng-class="{default: self.selectors.seats.value == 0}"
                  ng-click="self.selectors.seats.isActive = !self.selectors.seats.isActive">&nbsp;{{self.selectors.seats.text()}}</div>
             <div class="wrapper" ng-class="{show: self.selectors.seats.isActive}">
                 <div class="ui-selector-options" ng-class="{show: self.selectors.seats.isActive}">
                     <div class="ui-selector-option first" ng-click="self.selectors.seats.select(1)">&nbsp;2</div>
                     <div class="ui-selector-option second" ng-click="self.selectors.seats.select(2)">&nbsp;4</div>
                     <div class="ui-selector-option third" ng-click="self.selectors.seats.select(3)">5+</div>
+                    <div class="ui-selector-option default" ng-click="self.selectors.seats.select(0)"></div>
                 </div>
             </div>
             <div class="title">Мест</div>
         </div>
         <div class="ui-selector luggage">
             <div class="ui-selector-active"
+                 ng-class="{default: self.selectors.luggage.value == 0}"
                  ng-click="self.selectors.luggage.isActive = !self.selectors.luggage.isActive">&nbsp;{{self.selectors.luggage.text()}}</div>
             <div class="wrapper" ng-class="{show: self.selectors.luggage.isActive}">
                 <div class="ui-selector-options" ng-class="{show: self.selectors.luggage.isActive}">
@@ -54,6 +61,7 @@
                     <div class="ui-selector-option second" ng-click="self.selectors.luggage.select(2)">&nbsp;2</div>
                     <div class="ui-selector-option third" ng-click="self.selectors.luggage.select(3)">&nbsp;3</div>
                     <div class="ui-selector-option fourth" ng-click="self.selectors.luggage.select(4)">4+</div>
+                    <div class="ui-selector-option default" ng-click="self.selectors.luggage.select(0)"></div>
                 </div>
             </div>
             <div class="title">Багаж</div>

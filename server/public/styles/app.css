@@ -420,11 +420,11 @@ header a.active {
   font-weight: bolder;
 }
 .app-search .ui-selector.transmission .wrapper.show {
-  height: 214px;
-  -webkit-transform: translate3d(0, -205px, 0);
-  -moz-transform: translate3d(0, -205px, 0);
-  -o-transform: translate3d(0, -205px, 0);
-  transform: translate3d(0, -205px, 0);
+  height: 270px;
+  -webkit-transform: translate3d(0, -270px, 0);
+  -moz-transform: translate3d(0, -270px, 0);
+  -o-transform: translate3d(0, -270px, 0);
+  transform: translate3d(0, -270px, 0);
 }
 .app-search .ui-selector.transmission > * {
   background-size: 70%;
@@ -439,21 +439,24 @@ header a.active {
   background-image: url(/assets/a.png);
 }
 .app-search .ui-selector.luggage .wrapper.show {
-  height: 270px;
-  -webkit-transform: translate3d(0, -270px, 0);
-  -moz-transform: translate3d(0, -270px, 0);
-  -o-transform: translate3d(0, -270px, 0);
-  transform: translate3d(0, -270px, 0);
+  height: 330px;
+  -webkit-transform: translate3d(0, -330px, 0);
+  -moz-transform: translate3d(0, -330px, 0);
+  -o-transform: translate3d(0, -330px, 0);
+  transform: translate3d(0, -330px, 0);
 }
 .app-search .ui-selector.luggage .ui-selector-option {
-  margin: 1px 0 4px;
+  margin: 1px 0 2px;
+}
+.app-search .ui-selector.luggage .ui-selector-option:last-of-type {
+  margin-bottom: 1px;
 }
 .app-search .ui-selector.class .wrapper.show {
-  height: 270px;
-  -webkit-transform: translate3d(0, -270px, 0);
-  -moz-transform: translate3d(0, -270px, 0);
-  -o-transform: translate3d(0, -270px, 0);
-  transform: translate3d(0, -270px, 0);
+  height: 335px;
+  -webkit-transform: translate3d(0, -335px, 0);
+  -moz-transform: translate3d(0, -335px, 0);
+  -o-transform: translate3d(0, -335px, 0);
+  transform: translate3d(0, -335px, 0);
 }
 .app-search .ui-selector.class .small {
   background-image: url(/assets/small.png);
@@ -467,15 +470,22 @@ header a.active {
 .app-search .ui-selector.class .large {
   background-image: url(/assets/large.png);
 }
+.app-search .ui-selector .default {
+  background-image: url(/assets/default.png);
+  background-size: 70%;
+}
 .app-search .ui-selector.seats .wrapper.show {
-  height: 214px;
-  -webkit-transform: translate3d(0, -205px, 0);
-  -moz-transform: translate3d(0, -205px, 0);
-  -o-transform: translate3d(0, -205px, 0);
-  transform: translate3d(0, -205px, 0);
+  height: 265px;
+  -webkit-transform: translate3d(0, -265px, 0);
+  -moz-transform: translate3d(0, -265px, 0);
+  -o-transform: translate3d(0, -265px, 0);
+  transform: translate3d(0, -265px, 0);
 }
 .app-search .ui-selector.seats .ui-selector-option {
-  margin: 1px 0 4px;
+  margin: 1px 0 2px;
+}
+.app-search .ui-selector.seats .ui-selector-option:last-of-type {
+  margin-bottom: 1px;
 }
 .app-search .ui-selector.seats .title,
 .app-search .ui-selector.luggage .title {

@@ -66,10 +66,10 @@
     }
 
     &.transmission{
-      @height: 214px;
+      @height: 270px;
       .wrapper.show{
         height: @height;
-        .translate3d(0,-205px,0);
+        .translate3d(0,-@height,0);
       }
       >*{
         background-size: 70%;
@@ -85,17 +85,20 @@
       }
     }
     &.luggage{
-      @height: 270px;
+      @height: 330px;
       .wrapper.show{
         height: @height;
         .translate3d(0,-@height,0);
       }
       .ui-selector-option{
-        margin: 1px 0 4px;
+        margin: 1px 0 2px;
+        &:last-of-type{
+          margin-bottom: 1px;
+        }
       }
     }
     &.class{
-      @height: 270px;
+      @height: 335px;
       .wrapper.show{
         height: @height;
         .translate3d(0,-@height,0);
@@ -113,14 +116,21 @@
         background-image: url(/assets/large.png);
       }
     }
+    .default{
+      background-image: url(/assets/default.png);
+      background-size: 70%;
+    }
     &.seats{
-      @height: 214px;
+      @height: 265px;
       .wrapper.show{
         height: @height;
-        .translate3d(0,-205px,0);
+        .translate3d(0,-@height,0);
       }
       .ui-selector-option{
-        margin: 1px 0 4px;
+        margin: 1px 0 2px;
+        &:last-of-type{
+          margin-bottom: 1px;
+        }
       }
     }
     &.seats,&.luggage{
