@@ -219,6 +219,17 @@
 
             Restangular.all('api').one('cars/search').get(params).then(function(data){
                     console.log(data.plain());
+                    if (data.min_price != 0 || data.max_price != 0){
+                        self.priceSlider.options.floor = data.min_price;
+                        self.priceSlider.options.ceil = data.max_price;
+                        if (self.priceSlider.min < self.priceSlider.options.floor){
+                            self.priceSlider.min = self.priceSlider.options.floor;
+                        }
+                        if (self.priceSlider.max > self.priceSlider.options.ceil){
+                            self.priceSlider.max = self.priceSlider.options.ceil;
+                        }
+                    }
+
                 },
                 function(error){
                     console.log(error);
