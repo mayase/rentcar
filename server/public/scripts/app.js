@@ -91,8 +91,8 @@
     var module_name = 'Rentcar.Main',
         controller_name = 'IndexController';
     angular.module(module_name).controller(module_name+'.'+controller_name, controller);
-    controller.$inject = ['$scope', '$state'];
-    function controller($scope, $state) {
+    controller.$inject = ['$scope', '$state', 'Restangular'];
+    function controller($scope, $state, Restangular) {
 
         var self = this;
 
@@ -122,7 +122,7 @@
 
         self.selectors = {
             class: {
-                value: '1',
+                value: '0',
                 isActive: false,
                 select: function(val){
                     self.selectors.class.value = val;
@@ -130,7 +130,7 @@
                 }
             },
             transmission: {
-                value: '1',
+                value: '0',
                 isActive: false,
                 select: function(val){
                     self.selectors.transmission.value = val;
@@ -138,7 +138,7 @@
                 }
             },
             seats: {
-                value: '1',
+                value: '0',
                 isActive: false,
                 select: function(val){
                     self.selectors.seats.value = val;
@@ -146,6 +146,7 @@
                 },
                 text: function(){
                     var mapper = {
+                        0: '',
                         1: ' 2',
                         2: ' 4',
                         3: '5+'
@@ -154,7 +155,7 @@
                 }
             },
             luggage: {
-                value: '1',
+                value: '0',
                 isActive: false,
                 select: function(val){
                     self.selectors.luggage.value = val;
@@ -162,6 +163,7 @@
                 },
                 text: function(){
                     var mapper = {
+                        0: '',
                         1: ' 1',
                         2: ' 2',
                         3: '3',
@@ -172,6 +174,57 @@
             }
         };
 
+        function getSearchParams(){
+            var params = {};
+
+            params.price_start = self.priceSlider.min;
+            params.price_end = self.priceSlider.max;
+
+            if (self.selectors.class.value != '0')
+                params.class_id = self.selectors.class.value;
+            if (self.selectors.seats.value != '0')
+                params.seats = self.selectors.seats.value;
+            if (self.selectors.luggage.value != '0')
+                params.luggage = self.selectors.luggage.value;
+            if (self.selectors.transmission.value != '0')
+                params.transmission = self.selectors.transmission.value;
+
+            if (self.dateFromValue)
+                params.availability_start_date = $.datepicker.parseDate('dd.mm.yy', self.dateFromValue);
+            if (self.dateToValue)
+                params.availability_end_date = $.datepicker.parseDate('dd.mm.yy', self.dateToValue);
+
+            return params;
+        }
+
+        $scope.$watchGroup(['self.priceSlider.min', 'self.priceSlider.max',
+        'self.selectors.class.value', 'self.selectors.transmission.value', 'self.selectors.seats.value', 'self.selectors.luggage.value',
+        'self.dateFromValue', 'self.dateToValue'], function(oldValues, newValues){
+            console.log('try search');
+            searchHandler();
+        });
+        var searchTimeoutTime = 1000;
+        var searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
+        function searchHandler(){
+
+            if (searchTimeout){
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
+            }
+        }
+        function searchRequest(){
+            var params = getSearchParams();
+            console.log('REQUEST');
+            console.log(params);
+
+            Restangular.all('api').one('cars/search').get(params).then(function(data){
+                    console.log(data.plain());
+                },
+                function(error){
+                    console.log(error);
+                }
+            )
+        }
 
         //map
         var map;
