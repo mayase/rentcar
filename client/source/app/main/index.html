@@ -1,6 +1,10 @@
 <div class="app-search">
     <div id="map"></div>
     <div class="filter">
+        <rzslider
+                rz-slider-model="self.priceSlider.min"
+                rz-slider-high="self.priceSlider.max"
+                rz-slider-options="self.priceSlider.options"></rzslider>
         <div class="ui-selector class">
             <div class="ui-selector-active"
                  ng-click="self.selectors.class.isActive = !self.selectors.class.isActive"
@@ -76,14 +80,13 @@
                 <input type="text" class="form-control datepickerTo" ng-model="self.dateToValue">
             </div>
         </form>
-
-        <rzslider
-                rz-slider-model="self.priceSlider.min"
-                rz-slider-high="self.priceSlider.max"
-                rz-slider-options="self.priceSlider.options"></rzslider>
     </div>
     <div class="content" ng-show="self.listActive" data-simplebar-direction="vertical">
-        <div class="total">Всего результатов: {{self.searchTotal}}</div>
+        <div class="total">Всего результатов: {{self.searchTotal}}
+            <span ng-show="self.geolocationIsOn"
+                  ng-click="self.distanceSortToggle()"
+                  ng-class="{active: self.distanceSort}">сортировать по удаленности</span>
+        </div>
         <div class="item" ng-repeat="item in self.items">
             <div class="title">
                 {{item.name}}
@@ -138,5 +141,20 @@
     </div>
     <div class="ui-control view mapSearch" ng-click="self.search()" ng-hide="true" ng-disabled="!self.newBounds">
         Искать здесь <i class="fa fa-refresh"></i>
+    </div>
+    <div class="loader" ng-show="self.isLoading"><i class="fa fa-refresh fa-spin"></i></div>
+    <div class="city-select" ng-show="self.isLocationModalOpened">
+        <div class="wrapper">
+            <div class="title">Выберите город, в котором вы ищете машину для аренды</div>
+            <form class="pure-form">
+                <input id="Autocomplete" type="text" ng-autocomplete ng-model="self.userLocationName"
+                       options="self.autocompleteOptions"
+                       details="self.userLocationDetails" />
+                <div class="pure-button pure-button-primary" ng-click="self.setLocation()" ng-disabled="!self.userLocationDetails">Ок</div>
+            </form>
+            <div class="pure-button close pure-button-primary" ng-click="self.isLocationModalOpened = false" ng-disabled="!self.geolocationIsOn">Искать ближайшую</div>
+            <div class="geolocation-turnon" ng-hide="self.geolocationIsOn">Разрешите определение местоположения</div>
+            <div><div class="pure-button close" ng-click="self.isLocationModalOpened = false">Закрыть</div></div>
+        </div>
     </div>
 </div>

@@ -10,6 +10,7 @@
     width: 100%;
   }
   .filter{
+    padding-bottom: 20px;
     text-align: center;
     box-sizing: border-box;
     padding-top: 20px;
@@ -66,6 +67,19 @@
     //border-bottom: 1px solid #FF683A;
     color: #FF683A;
     font-size: 16px;
+    span{
+      color: #2196F3;
+      display: inline-block;
+      margin-left: 20px;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid;
+      &.active{
+        background-color: #2196F3;
+        color: white;
+      }
+    }
   }
   .ui-selector{
 
@@ -155,6 +169,9 @@
     }
   }
   rzslider{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 40px;
     text-align: initial;
     width: 90%;
     margin-left: 5%;
@@ -276,15 +293,85 @@
       }
     }
   }
+  .loader{
+    position: absolute;
+    top: 0;
+    bottom: @filter-height;
+    width: 100%;
+    background-color: rgba(255,255,255,0.3);
+    font-size: 50px;
+    text-align: center;
+    &:before{
+      content: "";
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    i{
+      display: inline-block;
+      vertical-align: middle;
+      background-color: whitesmoke;
+      padding: 10px 10px 60px;
+      border-radius: 999px;
+      width: 50px;
+      height: 0;
+      border: 1px solid #5F5F5F;
+      box-shadow: 0 0 10px gray;
+      animation-duration: 1.2s;
+      color: #3C3C3C;
+    }
+  }
+  .city-select{
+    position: fixed;
+    font-size: 18px;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    z-index: 22;
+    text-align: center;
+    background-color: rgba(0,0,0, 0.4);
+    &:before{
+      content: "";
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .wrapper{
+      display: inline-block;
+      vertical-align: middle;
+      background-color: #333333;
+      height: 300px;
+      width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px;
+    }
+    .title{
+      color: #FF683A;
+      font-size: 20px;
+      padding: 30px;
+    }
+    .close{
+      margin-top: 15px;
+    }
+    .geolocation-turnon{
+      color: whitesmoke;
+      padding: 2px;
+      font-size: 14px;
+      //display: none;
+    }
+  }
   @media (min-width: 1024px) {
-    @filter-height-big: 200px;
+    @filter-height-big: 170px;
+    .loader{
+      bottom: @filter-height-big;
+    }
     .total{
       display: block;
     }
     rzslider{
+      vertical-align: top;
       display: inline-block;
       width: 400px;
-      margin-left: 5%;
     }
     .filter{
       margin-top: -@filter-height-big;

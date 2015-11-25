@@ -212,6 +212,7 @@ h2 {
   user-select: none;
 }
 .ui-control .addon {
+  border: 1px solid #DBDBDB;
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
@@ -280,6 +281,7 @@ h2 {
 }
 .ui-selector .wrapper > .ui-selector-active .addon,
 .ui-selector .wrapper > .ui-selector-options > [class^=ui-selector] .addon {
+  border: 1px solid #DBDBDB;
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
@@ -317,6 +319,7 @@ h2 {
   display: inline-block;
 }
 .ui-selector > .ui-selector-active .addon {
+  border: 1px solid #DBDBDB;
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
@@ -389,6 +392,7 @@ header a.active {
   width: 100%;
 }
 .app-search .filter {
+  padding-bottom: 20px;
   text-align: center;
   box-sizing: border-box;
   padding-top: 20px;
@@ -441,6 +445,19 @@ header a.active {
   padding: 10px;
   color: #FF683A;
   font-size: 16px;
+}
+.app-search .total span {
+  color: #2196F3;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+.app-search .total span.active {
+  background-color: #2196F3;
+  color: white;
 }
 .app-search .ui-selector .ui-selector-option,
 .app-search .ui-selector .ui-selector-active {
@@ -543,6 +560,8 @@ header a.active {
   background-image: url(/assets/large.png);
 }
 .app-search rzslider {
+  margin-right: 5%;
+  margin-bottom: 40px;
   text-align: initial;
   width: 90%;
   margin-left: 5%;
@@ -648,6 +667,7 @@ header a.active {
   border: 1px solid black;
 }
 .app-search .item .icon-stat-image .addon {
+  border: 1px solid #DBDBDB;
   background-color: inherit;
   border-radius: 99px;
   display: inline-block;
@@ -703,23 +723,92 @@ header a.active {
   font-size: 20px;
   display: inline-block;
 }
+.app-search .loader {
+  position: absolute;
+  top: 0;
+  bottom: 120px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 50px;
+  text-align: center;
+}
+.app-search .loader:before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.app-search .loader i {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: whitesmoke;
+  padding: 10px 10px 60px;
+  border-radius: 999px;
+  width: 50px;
+  height: 0;
+  border: 1px solid #5F5F5F;
+  box-shadow: 0 0 10px gray;
+  animation-duration: 1.2s;
+  color: #3C3C3C;
+}
+.app-search .city-select {
+  position: fixed;
+  font-size: 18px;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 22;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.app-search .city-select:before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.app-search .city-select .wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #333333;
+  height: 300px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px;
+}
+.app-search .city-select .title {
+  color: #FF683A;
+  font-size: 20px;
+  padding: 30px;
+}
+.app-search .city-select .close {
+  margin-top: 15px;
+}
+.app-search .city-select .geolocation-turnon {
+  color: whitesmoke;
+  padding: 2px;
+  font-size: 14px;
+}
 @media (min-width: 1024px) {
+  .app-search .loader {
+    bottom: 170px;
+  }
   .app-search .total {
     display: block;
   }
   .app-search rzslider {
+    vertical-align: top;
     display: inline-block;
     width: 400px;
-    margin-left: 5%;
   }
   .app-search .filter {
-    margin-top: -200px;
-    min-height: 200px;
+    margin-top: -170px;
+    min-height: 170px;
   }
   .app-search #map {
     position: fixed!important;
     height: auto;
-    bottom: 200px;
+    bottom: 170px;
     left: 0;
     right: 50%;
     width: auto;
@@ -730,7 +819,7 @@ header a.active {
     right: 0;
     width: auto;
     display: block!important;
-    bottom: 200px;
+    bottom: 170px;
   }
   .app-search .ui-control.listMapToggle {
     display: none;

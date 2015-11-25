@@ -6,14 +6,22 @@
     function controller($scope, $state, Restangular) {
 
         var self = this;
-
+        self.autocompleteOptions = {
+            types: '(cities)',
+            country: 'ca'
+        };
+        self.userLocation = null;
+        self.userLocationName = null;
+        self.userLocationDetails = null;
+        self.setLocation = setLocation;
         self.bounds = {
             boundary_top_left_lat: null,
             boundary_top_left_lng: null,
             boundary_bottom_right_lat: null,
             boundary_bottom_right_lng: null
         };
-
+        self.geolocationIsOn = false;
+        self.isLocationModalOpened = true;
         setTimeout(function(){
             $('.datepickerFrom').datepicker({
                 //startDate: new Date(),
@@ -26,7 +34,7 @@
         });
 
         self.dateFromValue = $.datepicker.formatDate('dd.mm.yy', new Date());
-        self.dateToValue = $.datepicker.formatDate('dd.mm.yy', new Date());
+        self.dateToValue = $.datepicker.formatDate('dd.mm.yy', addDays(new Date(), 3));
 
         self.priceSlider = {
             min: 100,
@@ -64,8 +72,8 @@
                 text: function(){
                     var mapper = {
                         0: '',
-                        1: ' 2',
-                        2: ' 4',
+                        1: '2',
+                        2: '4',
                         3: '5+'
                     };
                     return mapper[self.selectors.seats.value];
@@ -81,8 +89,8 @@
                 text: function(){
                     var mapper = {
                         0: '',
-                        1: ' 1',
-                        2: ' 2',
+                        1: '1',
+                        2: '2',
                         3: '3',
                         4: '4+'
                     };
@@ -108,6 +116,19 @@
         self.formatDate = function(date){return $.datepicker.formatDate('dd.mm.yy', new Date(date));};
         self.showOnMap = showOnMap;
         self.search = searchHandler;
+        self.distanceSortToggle = distanceSortToggle;
+
+
+        function distanceSortToggle(){
+            self.distanceSort = !self.distanceSort;
+            self.search();
+        }
+
+        function addDays(date, days) {
+            var result = new Date(date);
+            result.setDate(result.getDate() + days);
+            return result;
+        }
 
         function showOnMap(id){
             for (var marker_key in markers){
@@ -155,14 +176,23 @@
                 params[key] = self.bounds[key];
             }
 
+            if(self.geolocationIsOn && self.distanceSort){
+                console.log(self.userLocation);
+                params.user_lat = self.userLocation.lat();
+                params.user_lng = self.userLocation.lng();
+            }
+
             return params;
         }
 
         $scope.$watchGroup(['self.priceSlider.min', 'self.priceSlider.max',
         'self.selectors.class.value', 'self.selectors.transmission.value', 'self.selectors.seats.value', 'self.selectors.luggage.value',
         'self.dateFromValue', 'self.dateToValue'], function(oldValues, newValues){
-            console.log('try search');
+            self.isLoading = true;
             searchHandler();
+        });
+        $scope.$watchGroup(['self.userLocationName','self.userLocationDetails'], function(oldValue, newValue){
+            console.log(newValue);
         });
         var searchTimeoutTime = 500;
         var searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
@@ -174,9 +204,9 @@
             }
         }
         function searchRequest(){
+
+            self.isLoading = true;
             var params = getSearchParams();
-            console.log('REQUEST');
-            console.log(params);
             self.newBounds = false;
 
             Restangular.all('api').one('cars/search').get(params).then(function(data){
@@ -199,19 +229,28 @@
                     self.items = data.result;
                     self.searchTotal = data.total;
                     setMarkers();
+                    self.isLoading = false;
                 },
                 function(error){
                     console.log(error);
                     self.newBounds = true;
+                    self.isLoading = false;
                 }
             )
         }
 
+        function setLocation(){
+            //self.userLocation = self.userLocationDetails.geometry.location;
+            self.isLocationModalOpened = false;
+            map.setCenter(self.userLocationDetails.geometry.location);
+        }
         //map
         var map;
 
         function initialize() {
             GeoCoder = new google.maps.Geocoder();
+            var initialLocation  = {lat: 55.75585014935258, lng: 37.61785014935258};
+
             var mapOptions = {
                 center: {lat: 55.75585014935258, lng: 37.61785014935258},
                 zoom: 8
@@ -219,6 +258,35 @@
             map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
             map.setZoom(13);
+
+            // Try W3C Geolocation (Preferred)
+            if(navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                    map.setCenter(initialLocation);
+                    self.userLocation = initialLocation;
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: initialLocation,
+                        icon: 'http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png'
+                    });
+                    self.geolocationIsOn = true;
+                    $scope.$digest();
+                }, function() {
+                    self.isLocationModalOpened = true;
+                    self.geolocationIsOn = false;
+                    $scope.$digest();
+                });
+            }
+            // Browser doesn't support Geolocation
+            else {
+                self.geolocationIsOn = false;
+                self.isLocationModalOpened = true;
+                //console.log(self.geolocationIsOn);
+
+                $scope.$digest();
+            }
 
             map.addListener('bounds_changed', function() {
                 var bounds = map.getBounds(),

@@ -5,6 +5,7 @@ var app = angular.module('App', [
     'ui.router',
     'restangular',
     'rzModule',
+    'ngAutocomplete',
 
     //appModules
     'Rentcar.Main',
