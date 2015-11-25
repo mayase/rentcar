@@ -36,7 +36,7 @@
                 ceil: 1000
             }
         };
-        self.total = 0;
+        self.searchTotal = 0;
         self.selectors = {
             class: {
                 value: '0',

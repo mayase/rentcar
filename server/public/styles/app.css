@@ -362,6 +362,20 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
+}
 .app-search {
   position: absolute;
   top: 71px;
@@ -375,6 +389,7 @@ header a.active {
   width: 100%;
 }
 .app-search .filter {
+  text-align: center;
   box-sizing: border-box;
   padding-top: 20px;
   position: absolute;
@@ -386,6 +401,7 @@ header a.active {
   min-height: 200px;
 }
 .app-search .content {
+  box-shadow: -2px 0 4px -2px #333;
   position: absolute;
   top: 0;
   width: 100%;
@@ -423,7 +439,6 @@ header a.active {
   display: none;
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid #FF683A;
   color: #FF683A;
   font-size: 16px;
 }
@@ -438,22 +453,21 @@ header a.active {
   background-size: 70%;
 }
 .app-search .ui-selector.transmission .wrapper.show {
-  height: 270px;
-  -webkit-transform: translate3d(0, -270px, 0);
-  -moz-transform: translate3d(0, -270px, 0);
-  -o-transform: translate3d(0, -270px, 0);
-  transform: translate3d(0, -270px, 0);
-}
-.app-search .ui-selector.transmission > * {
-  background-size: 70%;
+  height: 205px;
+  -webkit-transform: translate3d(0, -205px, 0);
+  -moz-transform: translate3d(0, -205px, 0);
+  -o-transform: translate3d(0, -205px, 0);
+  transform: translate3d(0, -205px, 0);
 }
 .app-search .ui-selector.transmission .m {
+  background-size: 60%;
   background-image: url(/assets/m.png);
 }
 .app-search .ui-selector.transmission .sa {
   background-image: url(/assets/sa.png);
 }
 .app-search .ui-selector.transmission .a {
+  background-size: 70%;
   background-image: url(/assets/a.png);
 }
 .app-search .ui-selector.class .wrapper.show {
@@ -505,16 +519,15 @@ header a.active {
 .app-search .ui-selector.luggage .title {
   margin-top: 5px;
 }
-.app-search .transmission-types > * {
-  background-size: 70%;
-}
 .app-search .transmission-types .m {
+  background-size: 60%;
   background-image: url(/assets/m.png);
 }
 .app-search .transmission-types .sa {
   background-image: url(/assets/sa.png);
 }
 .app-search .transmission-types .a {
+  background-size: 70%;
   background-image: url(/assets/a.png);
 }
 .app-search .class-types .small {
@@ -530,6 +543,7 @@ header a.active {
   background-image: url(/assets/large.png);
 }
 .app-search rzslider {
+  text-align: initial;
   width: 90%;
   margin-left: 5%;
 }
@@ -643,16 +657,15 @@ header a.active {
   left: 0;
   bottom: -18px;
 }
-.app-search .item > * {
-  background-size: 70%;
-}
 .app-search .item .m {
+  background-size: 60%;
   background-image: url(/assets/m.png);
 }
 .app-search .item .sa {
   background-image: url(/assets/sa.png);
 }
 .app-search .item .a {
+  background-size: 70%;
   background-image: url(/assets/a.png);
 }
 .app-search .item .small {
@@ -810,18 +823,4 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
-}
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
 }
