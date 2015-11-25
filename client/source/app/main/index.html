@@ -136,7 +136,7 @@
         <i class="fa fa-list-ul" ng-hide="self.listActive"></i>
         <div class="addon">{{self.searchTotal}}</div>
     </div>
-    <div class="ui-control view mapSearch" ng-click="self.search()" ng-disabled="!self.newBounds">
+    <div class="ui-control view mapSearch" ng-click="self.search()" ng-hide="self.listActive" ng-disabled="!self.newBounds">
         Искать здесь <i class="fa fa-refresh"></i>
     </div>
 </div>

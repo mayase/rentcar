@@ -404,7 +404,7 @@ header a.active {
   top: 0;
   width: 100%;
   bottom: 120px;
-  overflow: auto;
+  overflow: hidden;
   background-color: whitesmoke;
 }
 .app-search #map {
@@ -610,6 +610,7 @@ header a.active {
   font-size: 16px;
 }
 .app-search .item .availability span {
+  display: inline-block;
   padding-left: 10px;
   color: #FF683A;
 }

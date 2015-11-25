@@ -36,7 +36,7 @@
                 ceil: 1000
             }
         };
-
+        self.total = 0;
         self.selectors = {
             class: {
                 value: '0',
@@ -114,10 +114,12 @@
                 var marker = markers[marker_key];
                 if (marker.id == id){
                     console.log('found');
-                    map.panTo(marker.position);
-                    if (map.getZoom() < 14) map.setZoom(14);
+                    //map.panTo(marker.position);
+                    //if (map.getZoom() < 14) map.setZoom(14);
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     setTimeout(function(){ marker.setAnimation(null); }, 2150);
+                    self.listActive = false;
+                    $('.app-search').scrollTop();
                     break;
                 }
             }
@@ -162,7 +164,7 @@
             console.log('try search');
             searchHandler();
         });
-        var searchTimeoutTime = 1000;
+        var searchTimeoutTime = 500;
         var searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
         function searchHandler(){
             self.newBounds = false;
@@ -229,6 +231,7 @@
                 self.bounds.boundary_bottom_right_lat= se.lat();
                 self.bounds.boundary_bottom_right_lng = se.lng();
                 self.newBounds = true;
+                self.search();
                 $scope.$digest();
             });
         }
