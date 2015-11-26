@@ -96,8 +96,7 @@
 
         var self = this;
         self.autocompleteOptions = {
-            types: '(cities)',
-            country: 'ca'
+            types: '(cities)'
         };
         self.userLocation = null;
         self.userLocationName = null;
@@ -117,7 +116,7 @@
                 format: 'dd.mm.yyyy'
             });
             $('.datepickerTo').datepicker({
-                startDate: new Date(),
+                //startDate: new Date(),
                 format: 'dd.mm.yyyy'
             });
         });
@@ -200,6 +199,19 @@
                 1: 'Механика',
                 2: 'Полуавтомат',
                 3: 'Автомат'
+            },
+            seats:{
+                0: '?',
+                1: '2',
+                2: '4',
+                3: '5+'
+            },
+            luggage:{
+                0: '?',
+                1: '1',
+                2: '2',
+                3: '3',
+                4: '4+'
             }
         };
         self.formatDate = function(date){return $.datepicker.formatDate('dd.mm.yy', new Date(date));};
@@ -256,10 +268,12 @@
             if (self.selectors.transmission.value != '0')
                 params.transmission = self.selectors.transmission.value;
 
-            if (self.dateFromValue)
-                params.availability_start_date = $.datepicker.parseDate('dd.mm.yy', self.dateFromValue);
-            if (self.dateToValue)
-                params.availability_end_date = $.datepicker.parseDate('dd.mm.yy', self.dateToValue);
+            if(self.dateFromValue <= self.dateToValue){
+                if (self.dateFromValue)
+                    params.availability_start_date = addDays($.datepicker.parseDate('dd.mm.yy', self.dateFromValue), 1);//$.datepicker.parseDate('dd.mm.yy', );
+                if (self.dateToValue)
+                    params.availability_end_date = $.datepicker.parseDate('dd.mm.yy', self.dateToValue);
+            }
 
             for (var key in self.bounds){
                 params[key] = self.bounds[key];
@@ -280,8 +294,15 @@
             self.isLoading = true;
             searchHandler();
         });
-        $scope.$watchGroup(['self.userLocationName','self.userLocationDetails'], function(oldValue, newValue){
-            console.log(newValue);
+        $scope.$watchGroup(['self.dateFromValue', 'self.dateToValue'], function(oldValue, newValue){
+            setTimeout(function(){
+                $('.datepickerFrom').datepicker('setEndDate', self.dateToValue);
+                $('.datepickerTo').datepicker('setStartDate', self.dateFromValue);
+            });
+
+            //$scope.$digest();
+            //$('.datepickerFrom').datepicker('setEndDate', $.datepicker.parseDate('dd.mm.yy', self.dateToValue));
+            //$('.datepickerTo').datepicker('setStartDate', $.datepicker.parseDate('dd.mm.yy', self.dateFromValue));
         });
         var searchTimeoutTime = 500;
         var searchTimeout = setTimeout(function(){searchRequest();}, searchTimeoutTime);
