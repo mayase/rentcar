@@ -390,7 +390,10 @@
                 zoom: 8,
                 zoomControlOptions: {
                     position: google.maps.ControlPosition.RIGHT_CENTER
-                }
+                },
+                mapTypeControl: false,
+                streetViewControl: false
+
             };
             map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);
