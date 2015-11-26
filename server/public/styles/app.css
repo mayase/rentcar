@@ -810,9 +810,15 @@ header a.active {
   padding: 2px;
   font-size: 14px;
 }
+.app-search .no-items {
+  text-align: center;
+  padding: 40px;
+  font-size: 30px;
+  color: #9C9C9C;
+}
 @media (min-width: 1024px) {
   .app-search .loader {
-    bottom: 170px;
+    bottom: 180px;
   }
   .app-search .total {
     display: block;
@@ -823,13 +829,13 @@ header a.active {
     width: 400px;
   }
   .app-search .filter {
-    margin-top: -170px;
-    min-height: 170px;
+    margin-top: -180px;
+    min-height: 180px;
   }
   .app-search #map {
     position: fixed!important;
     height: auto;
-    bottom: 170px;
+    bottom: 180px;
     left: 0;
     right: 50%;
     width: auto;
@@ -840,7 +846,7 @@ header a.active {
     right: 0;
     width: auto;
     display: block!important;
-    bottom: 170px;
+    bottom: 180px;
   }
   .app-search .content .item-rent .pure-button {
     font-size: 20px;

@@ -87,6 +87,7 @@
                   ng-click="self.distanceSortToggle()"
                   ng-class="{active: self.distanceSort}">сортировать по удаленности</span>
         </div>
+        <div class="no-items" ng-show="!self.items || self.items.length == 0">Ничего не найдено</div>
         <div id="car-{{item.id}}" class="item" ng-repeat="item in self.items">
             <div class="title">
                 {{item.name}}
