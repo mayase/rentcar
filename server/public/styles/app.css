@@ -608,9 +608,12 @@ header a.active {
   vertical-align: middle;
 }
 .app-search .item .item-stats {
-  width: 55%;
+  width: 65%;
 }
-.app-search .item .item-stats > * {
+.app-search .item .item-stats .item-stats-block {
+  display: inline-block;
+}
+.app-search .item .item-stats .item-stats-block > * {
   display: inline-block;
   text-align: center;
   width: 70px;
@@ -710,7 +713,7 @@ header a.active {
   background-color: whitesmoke;
 }
 .app-search .item .item-rent {
-  width: 40%;
+  width: 30%;
   text-align: center;
 }
 .app-search .item .item-rent .price {
@@ -722,6 +725,21 @@ header a.active {
 .app-search .item .item-rent .price span {
   font-size: 20px;
   display: inline-block;
+}
+.app-search .load-more {
+  text-align: center;
+  padding: 20px 0;
+}
+.app-search .load-more > * {
+  border: 1px solid #2196F3;
+  padding: 15px 30px;
+  border-radius: 10px;
+  display: inline-block;
+  color: #2196F3;
+}
+.app-search .load-more > *:hover {
+  background-color: #2196F3;
+  color: white;
 }
 .app-search .loader {
   position: absolute;

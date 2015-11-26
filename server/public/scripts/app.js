@@ -218,7 +218,23 @@
         self.showOnMap = showOnMap;
         self.search = searchHandler;
         self.distanceSortToggle = distanceSortToggle;
+        self.loadMore = loadMore;
+        self.requestOpt = {
+            lazyLoading: false,
+            //    function(){
+            //    if (self.items)
+            //        return self.searchTotal > self.items.length;
+            //    return false;
+            //},
+            top: 10,
+            offset: 0
+        };
 
+        function loadMore(){
+            self.requestOpt.lazyLoading = true;
+            self.requestOpt.offset += self.requestOpt.top;
+            self.search();
+        }
 
         function distanceSortToggle(){
             self.distanceSort = !self.distanceSort;
@@ -285,6 +301,11 @@
                 params.user_lng = self.userLocation.lng();
             }
 
+            if(self.requestOpt.lazyLoading){
+                params.top = self.requestOpt.top;
+                params.offset = self.requestOpt.offset;
+            }
+
             return params;
         }
 
@@ -336,10 +357,16 @@
                             self.priceSlider.max = self.priceSlider.options.ceil;
                         }
                     }
-                    self.items = data.result;
+                    var lazy = self.requestOpt.lazyLoading;
+                    if(lazy){
+                        self.items = self.items.concat(data.result);
+                    }
+                    else self.items = data.result;
                     self.searchTotal = data.total;
-                    setMarkers();
+                    setMarkers(lazy);
                     self.isLoading = false;
+                    self.requestOpt.lazyLoading = false;
+                    self.requestOpt.offset = 0;
                 },
                 function(error){
                     console.log(error);

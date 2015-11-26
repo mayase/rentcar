@@ -221,14 +221,18 @@
       }
     }
     .item-stats{
-      width: 55%;
-      >*{
+      width: 65%;
+      .item-stats-block{
         display: inline-block;
-        text-align: center;
-        width: 70px;
-        vertical-align: text-top;
-        margin: 0 10px;
+        >*{
+          display: inline-block;
+          text-align: center;
+          width: 70px;
+          vertical-align: text-top;
+          margin: 0 10px;
+        }
       }
+
       .title{
         font-size: 16px;
       }
@@ -279,7 +283,7 @@
       background-color: whitesmoke;
     }
     .item-rent{
-      width: 40%;
+      width: 30%;
       text-align: center;
       .price{
         font-size: 40px;
@@ -290,6 +294,21 @@
           font-size: 20px;
           display: inline-block;
         }
+      }
+    }
+  }
+  .load-more{
+    text-align: center;
+    padding: 20px 0;
+    >*{
+      border: 1px solid #2196F3;
+      padding: 15px 30px;
+      border-radius: 10px;
+      display: inline-block;
+      color: #2196F3;
+      &:hover{
+        background-color: #2196F3;
+        color: white;
       }
     }
   }

@@ -93,33 +93,36 @@
             </div>
             <div class="item-content">
                 <div class="item-stats">
-                    <div class="icon-stat">
-                        <div class="icon-stat-image-wrapper">
-                            <div class="icon-stat-image" ng-class="{default: item.class_id == 0,
+                    <div class="item-stats-block">
+                        <div class="icon-stat">
+                            <div class="icon-stat-image-wrapper">
+                                <div class="icon-stat-image" ng-class="{default: item.class_id == 0,
                             small: item.class_id == 1,
                             normal: item.class_id == 2,
                             mid: item.class_id == 3,
                             large: item.class_id == 4}"></div>
+                            </div>
+                            <div class="title">{{self.mappers.class_id[item.class_id]}}</div>
                         </div>
-                        <div class="title">{{self.mappers.class_id[item.class_id]}}</div>
-                    </div>
-                    <div class="icon-stat">
-                        <div class="icon-stat-image-wrapper">
-                            <div class="icon-stat-image" ng-class="{default: item.transmission == 0,
+                        <div class="icon-stat">
+                            <div class="icon-stat-image-wrapper">
+                                <div class="icon-stat-image" ng-class="{default: item.transmission == 0,
                             m: item.transmission == 1,
                             sa: item.transmission == 2,
                             a: item.transmission == 3}"></div>
+                            </div>
+                            <div class="title">{{self.mappers.transmission[item.transmission]}}</div>
                         </div>
-                        <div class="title">{{self.mappers.transmission[item.transmission]}}</div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-value">{{self.mappers.seats[item.seats]}}</div>
-                        <div class="title">Количество мест</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">{{self.mappers.luggage[item.luggage]}}</div>
-                        <div class="title">Мест багажа</div>
-                    </div>
+                    <div class="item-stats-block">
+                        <div class="stat">
+                            <div class="stat-value">{{self.mappers.seats[item.seats]}}</div>
+                            <div class="title">Количество мест</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">{{self.mappers.luggage[item.luggage]}}</div>
+                            <div class="title">Мест багажа</div>
+                        </div></div>
                     <div class="availability">
                         Доступность:  <span>{{self.formatDate(item.availability_start_date)}}  -  {{self.formatDate(item.availability_end_date)}}</span>
                     </div>
@@ -130,6 +133,9 @@
                 </div>
             </div>
             <div class="show-on-map" ng-click="self.showOnMap(item.id)"><i class="fa fa-map-marker"></i> Показать на карте</div>
+        </div>
+        <div class="load-more" ng-click="self.loadMore()" ng-show="self.items && self.items.length < self.searchTotal">
+            <div>Загрузить еще</div>
         </div>
     </div>
     <div style="clear:both;"></div>
