@@ -233,6 +233,7 @@
         function loadMore(){
             self.requestOpt.lazyLoading = true;
             self.requestOpt.offset += self.requestOpt.top;
+            console.log(self.requestOpt);
             self.search();
         }
 
@@ -313,6 +314,7 @@
         'self.selectors.class.value', 'self.selectors.transmission.value', 'self.selectors.seats.value', 'self.selectors.luggage.value',
         'self.dateFromValue', 'self.dateToValue'], function(oldValues, newValues){
             self.isLoading = true;
+            self.requestOpt.offset = 0;
             searchHandler();
         });
         $scope.$watchGroup(['self.dateFromValue', 'self.dateToValue'], function(oldValue, newValue){
@@ -359,14 +361,20 @@
                     }
                     var lazy = self.requestOpt.lazyLoading;
                     if(lazy){
+                        console.log(self.items);
+                        //for (var i in data.result){
+                        //    if (data.result[i].name == self.items[i].name) console.log('lol');
+                        //}
                         self.items = self.items.concat(data.result);
+
+                        console.log(self.items);
                     }
                     else self.items = data.result;
                     self.searchTotal = data.total;
                     setMarkers(lazy);
                     self.isLoading = false;
                     self.requestOpt.lazyLoading = false;
-                    self.requestOpt.offset = 0;
+
                 },
                 function(error){
                     console.log(error);
@@ -437,6 +445,7 @@
                 self.bounds.boundary_bottom_right_lng = se.lng();
                 self.newBounds = true;
                 self.search();
+                self.requestOpt.offset = 0;
                 $scope.$digest();
             });
         }
