@@ -1,5 +1,25 @@
 class Car < ActiveRecord::Base
+
+  #returns distance in meters
+  def self.distance loc1, loc2
+    rad_per_deg = Math::PI/180
+    r = 6371000
+
+    dlat_rad = (loc2[0].to_f - loc1[0].to_f) * rad_per_deg
+    dlon_rad = (loc2[1].to_f - loc1[1].to_f) * rad_per_deg
+
+    lat1_rad, lon1_rad = loc1.map {|i| i.to_f * rad_per_deg }
+    lat2_rad, lon2_rad = loc2.map {|i| i.to_f * rad_per_deg }
+
+    a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
+    c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
+
+    r * c # Delta in meters
+  end
+
   def self.search(args={})
+
+
     current_scope = Car.all
     #equal filters
     current_scope = current_scope.where(class_id: args[:class_id]) if args[:class_id]
@@ -34,20 +54,5 @@ class Car < ActiveRecord::Base
   def self.to_bool s
     s == "true"
   end
-  #returns distance in meters
-  def distance loc1, loc2
-    rad_per_deg = Math::PI/180
-    r = 6371000
 
-    dlat_rad = (loc2[0]-loc1[0]) * rad_per_deg
-    dlon_rad = (loc2[1]-loc1[1]) * rad_per_deg
-
-    lat1_rad, lon1_rad = loc1.map {|i| i * rad_per_deg }
-    lat2_rad, lon2_rad = loc2.map {|i| i * rad_per_deg }
-
-    a = Math.sin(dlat_rad/2)**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(dlon_rad/2)**2
-    c = 2 * Math::atan2(Math::sqrt(a), Math::sqrt(1-a))
-
-    r * c # Delta in meters
-  end
 end

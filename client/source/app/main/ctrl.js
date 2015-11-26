@@ -2,8 +2,8 @@
     var module_name = 'Rentcar.Main',
         controller_name = 'IndexController';
     angular.module(module_name).controller(module_name+'.'+controller_name, controller);
-    controller.$inject = ['$scope', '$state', 'Restangular'];
-    function controller($scope, $state, Restangular) {
+    controller.$inject = ['$anchorScroll', '$location', '$scope', '$state', 'Restangular'];
+    function controller($anchorScroll, $location, $scope, $state, Restangular) {
 
         var self = this;
         self.autocompleteOptions = {
@@ -144,7 +144,6 @@
         function loadMore(){
             self.requestOpt.lazyLoading = true;
             self.requestOpt.offset += self.requestOpt.top;
-            console.log(self.requestOpt);
             self.search();
         }
 
@@ -163,9 +162,6 @@
             for (var marker_key in markers){
                 var marker = markers[marker_key];
                 if (marker.id == id){
-                    console.log('found');
-                    //map.panTo(marker.position);
-                    //if (map.getZoom() < 14) map.setZoom(14);
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     setTimeout(function(){ marker.setAnimation(null); }, 2150);
                     self.listActive = false;
@@ -208,7 +204,6 @@
             }
 
             if(self.geolocationIsOn && self.distanceSort){
-                console.log(self.userLocation);
                 params.user_lat = self.userLocation.lat();
                 params.user_lng = self.userLocation.lng();
             }
@@ -272,13 +267,7 @@
                     }
                     var lazy = self.requestOpt.lazyLoading;
                     if(lazy){
-                        console.log(self.items);
-                        //for (var i in data.result){
-                        //    if (data.result[i].name == self.items[i].name) console.log('lol');
-                        //}
                         self.items = self.items.concat(data.result);
-
-                        console.log(self.items);
                     }
                     else self.items = data.result;
                     self.searchTotal = data.total;
@@ -339,7 +328,6 @@
             else {
                 self.geolocationIsOn = false;
                 self.isLocationModalOpened = true;
-                //console.log(self.geolocationIsOn);
 
                 $scope.$digest();
             }
@@ -363,14 +351,15 @@
 
         var markers = [];
         function showItemSnippet(item){
-            console.log(item);
-            for (var marker_key in markers){
-                if (marker[marker_key].id == item.id){
-                    console.log('found');
-                    marker[marker_key].setAnimation(google.maps.Animation.BOUNCE);
-                    break;
-                }
+            self.listActive = true;
+            $scope.$digest();
+            $('[id^="car-"]').css("background-color", "#ECECEC");
+            var newHash = 'car-' + item.id;
+            if ($location.hash() !== newHash) {
+                $location.hash(newHash);
             }
+            $anchorScroll(-100);
+            $('#car-'+item.id).css("background-color", "rgb(186, 219, 234)");
         }
         function setMarkers(lazy) {
             if(!lazy) {
