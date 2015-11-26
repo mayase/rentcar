@@ -298,7 +298,10 @@
 
             var mapOptions = {
                 center: {lat: 55.75585014935258, lng: 37.61785014935258},
-                zoom: 8
+                zoom: 8,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_CENTER
+                }
             };
             map = new google.maps.Map(document.getElementById('map'),
                 mapOptions);

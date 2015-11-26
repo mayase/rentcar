@@ -726,6 +726,9 @@ header a.active {
   font-size: 20px;
   display: inline-block;
 }
+.app-search .item .item-rent .pure-button {
+  font-size: 15px;
+}
 .app-search .load-more {
   text-align: center;
   padding: 20px 0;
@@ -838,6 +841,9 @@ header a.active {
     width: auto;
     display: block!important;
     bottom: 170px;
+  }
+  .app-search .content .item-rent .pure-button {
+    font-size: 20px;
   }
   .app-search .ui-control.listMapToggle {
     display: none;
