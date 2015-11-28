@@ -379,6 +379,9 @@ header a.active {
   min-height: 200px;
   padding: 20px;
 }
+body {
+  background-color: #333;
+}
 .app-search {
   position: absolute;
   top: 71px;

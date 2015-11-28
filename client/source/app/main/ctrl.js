@@ -129,6 +129,7 @@
         self.showOnMap = showOnMap;
         self.search = searchHandler;
         self.distanceSortToggle = distanceSortToggle;
+        self.distanceSort = true;
         self.loadMore = loadMore;
         self.requestOpt = {
             lazyLoading: false,
