@@ -365,6 +365,20 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
+.app-apiTest {
+  position: relative;
+  top: 71px;
+  padding: 10px 15px;
+}
+.app-apiTest input,
+.app-apiTest button {
+  margin: 5px 10px;
+}
+.app-apiTest article {
+  background-color: white;
+  min-height: 200px;
+  padding: 20px;
+}
 .app-search {
   position: absolute;
   top: 71px;
@@ -780,6 +794,7 @@ header a.active {
   background-color: #333333;
   height: 300px;
   width: 400px;
+  max-width: 80vw;
   border-radius: 10px;
   box-shadow: 0 0 10px;
 }
@@ -928,18 +943,4 @@ header a.active {
   min-height: 0;
   min-width: 10px;
   width: auto;
-}
-.app-apiTest {
-  position: relative;
-  top: 71px;
-  padding: 10px 15px;
-}
-.app-apiTest input,
-.app-apiTest button {
-  margin: 5px 10px;
-}
-.app-apiTest article {
-  background-color: white;
-  min-height: 200px;
-  padding: 20px;
 }
