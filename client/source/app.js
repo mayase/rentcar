@@ -15,7 +15,7 @@ var app = angular.module('App', [
 
 var options = function($urlRouterProvider) {
     $urlRouterProvider
-    .otherwise('/');
+    .otherwise('/about');
 
 };
 
