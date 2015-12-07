@@ -365,6 +365,15 @@ header a:not(.active):hover {
 header a.active {
   color: #00BCD4;
 }
+.fixed_bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background-color: lightgreen;
+  border: 10px solid black;
+  box-sizing: border-box;
+}
 .app-apiTest {
   position: relative;
   top: 71px;
