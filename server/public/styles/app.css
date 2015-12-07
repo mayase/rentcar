@@ -375,6 +375,8 @@ header a.active {
   border: 10px solid black;
   box-sizing: border-box;
   -webkit-transform-origin: 0 100%;
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
 }
 .app-apiTest {
   position: relative;
