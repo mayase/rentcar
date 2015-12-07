@@ -59,6 +59,28 @@
 <div>
     <h1>some content</h1>
 </div>
-<div class="fixed_bottom">
+<div id="fixed_bottom" class="fixed_bottom">
     content
 </div>
+
+<script type="text/javascript">
+
+    var overlay = document.getElementById('fixed_bottom');
+
+    window.addEventListener('scroll', function(e){
+        redraw();
+    });
+    window.addEventListener('resize', function(e){
+        redraw();
+    });
+    window.addEventListener('gestureend', function(e){
+        redraw();
+    });
+
+    function redraw(){
+        overlay.style.position = 'absolute';
+        overlay.style.left = window.pageXOffset + 'px';
+        overlay.style.bottom = document.documentElement.clientHeight - (window.pageYOffset + window.innerHeight) + 'px';
+        overlay.style["-webkit-transform"] = "scale(" + window.innerWidth/document.documentElement.clientWidth + ")";
+    }
+</script>
